@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:25:15 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/16 13:33:57 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:59:20 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,19 @@ class Contact {
 	std::string Nickname;
 	std::string PhoneNumber;
 	std::string DarkestSecret;
+	public:
+		void setFirstName();
+		void setLastName();
+		void setNickname();
+		void setPhoneNumber();
+		void setDarkestSecret();
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getNickname();
+		std::string getPhoneNumber();
+		std::string getDarkestSecret();
+		Contact();
 };
 
-Contact::Contact(void)
-{
-	std::cout << "Constructor has been called." << std::endl;
-};
 
 #endif

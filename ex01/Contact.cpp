@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/20 18:15:13 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:17:35 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,28 @@ void Contact::setDarkestSecret(){
 
 std::string Contact::getFirstName()
 {
+	std::cout << this->FirstName << '\n';
 	return this->FirstName;
 }
 
 std::string Contact::getLastName()
 {
+	std::cout << this->LastName << '\n';
 	return this->LastName;
 }
 std::string Contact::getNickname()
 {
+	std::cout << this->Nickname << '\n';
 	return this->Nickname;
 }
 std::string Contact::getPhoneNumber()
 {
+	std::cout << this->PhoneNumber << '\n';
 	return this->PhoneNumber;
 }
 std::string Contact::getDarkestSecret()
 {
+	std::cout << this->DarkestSecret << '\n';
 	return this->DarkestSecret;
 }
 
@@ -68,86 +73,37 @@ int isnumber(std::string string)
 	return 1;
 }
 
-//typedef void (Contact::*setVar)();
-
-//setVar member_functions[5] = 
-//{
-	//&Contact::setFirstName,
-	//&Contact::setLastName,
-	//&Contact::setNickname,
-	//&Contact::setPhoneNumber,
-	//&Contact::setDarkestSecret
-//};
-
-	//for (int i = 0; i < 5; i++)
-	//{
-			//setVar(*member_functions[i])();
-	//}
-
-///*
 Contact::Contact(void)
 {
 	std::cout << "Constructor has been called." << std::endl;
-	while (1)
-	{
-		Contact::setFirstName();
-		if (Contact::getFirstName().empty() == 1)
-		{
-			std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-			continue;	
-		}	
-		break;
-	}
-	while (1)
-	{
-		Contact::setLastName();
-		if (Contact::getLastName().empty() == 1)
-		{
-			std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-			continue;	
-		}	
-		break;
-	}
-	while (1)
-	{
-		Contact::setNickname();
-		if (Contact::getNickname().empty() == 1)
-		{
-			std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-			continue;	
-		}	
-		break;
-	}
-	while (1)
-	{
-		Contact::setPhoneNumber();
-		if (Contact::getPhoneNumber().empty() == 1)
-		{
-			std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-			continue;	
-		}
-		if (isnumber(Contact::getPhoneNumber()) == 0 || Contact::getPhoneNumber().size() != 9)
-		{
-			std::cout << RED << "Phone numbers are consisted of 9 digits!" << RESET << std::endl;
-			continue;
-		}
-		break;
-	}
-	while (1)
-	{
-		Contact::setDarkestSecret();
-		if (Contact::getDarkestSecret().empty() == 1)
-		{
-			std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-			continue;	
-		}	
-		break;
-	}
-	std::cout << GREEN << "All fields are valid. Contact added!" << RESET << std::endl;
-};
+}
 
 int main()
 {
 	class Contact G;
+	for (int i = 0; i < 5; i++)
+	{
+		while (1)
+		{
+			(G.*setter[i])();
+			if ((G.*getter[i])().empty() == 1)
+			{
+				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
+				(G.*getter[i])().clear();
+				continue;
+			}
+			if (i == 3)
+			{
+				if (isnumber((G.*getter[i])()) == 0 || (G.*getter[i])().size() != 9)
+				{
+					std::cout << RED << "Phone Numbers are consisted of 9 digits!" << RESET << std::endl;
+					(G.*getter[i])().clear();
+					continue;
+				}
+			}
+			break;
+		}
+	}
+	std::cout << GREEN << "All fields are valid. Contact added!" << RESET << std::endl;
 	return 0;
 }

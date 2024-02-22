@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:25:15 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/20 15:59:20 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:17:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,27 @@ class Contact {
 		std::string getNickname();
 		std::string getPhoneNumber();
 		std::string getDarkestSecret();
+		void (Contact::*setter[5])();
+		std::string (Contact::*getter[5])();
 		Contact();
 };
 
+typedef void (Contact::*fp_s)(void);
+typedef std::string (Contact::*fp_g)(void);
+	
+fp_s setter[5] = {
+	&Contact::setFirstName, 
+	&Contact::setLastName, 
+	&Contact::setNickname,
+	&Contact::setPhoneNumber,
+	&Contact::setDarkestSecret
+};
 
+fp_g getter[5] = { 
+	&Contact::getFirstName, 
+	&Contact::getLastName, 
+	&Contact::getNickname,
+	&Contact::getPhoneNumber,
+	&Contact::getDarkestSecret
+};
 #endif

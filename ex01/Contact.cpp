@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/23 17:15:24 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:44:46 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int isnumber(std::string string)
 
 Contact::Contact(void)
 {
-	std::cout << "Constructor has been called." << std::endl;
 	setter[0] = &Contact::setFirstName;
 	setter[1] = &Contact::setLastName;
 	setter[2] = &Contact::setNickname;
@@ -78,6 +77,7 @@ void Contact::createContact()
 			(this->*setter[i])();
 			if ((this->*getter[i])().empty() == 1)
 			{
+				//TODO: check for CTRL-D
 				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
 				continue;
 			}
@@ -95,24 +95,4 @@ void Contact::createContact()
 	}
 	std::cout << GREEN << "All fields are valid. Contact added!" << RESET << std::endl;
 }
-
-int main()
-{
-	Contact G;
-	G.createContact();
-	std::cout << MAGENTA << "First name is: " << G.getFirstName() << std::endl;
-	std::cout << "Last name is: " << G.getLastName() << std::endl;
-	std::cout << "Nickname is: " << G.getNickname() << std::endl;
-	std::cout << "Phonenumber is: " << G.getPhoneNumber() << std::endl;
-	std::cout << "DarkestSecret is: " << G.getDarkestSecret() << RESET << std::endl;
-	G.createContact();
-	std::cout << MAGENTA << "First name is: " << G.getFirstName() << std::endl;
-	std::cout << "Last name is: " << G.getLastName() << std::endl;
-	std::cout << "Nickname is: " << G.getNickname() << std::endl;
-	std::cout << "Phonenumber is: " << G.getPhoneNumber() << std::endl;
-	std::cout << "DarkestSecret is: " << G.getDarkestSecret() << RESET << std::endl;
-	return 0;
-}
-
-
 

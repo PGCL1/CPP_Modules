@@ -6,7 +6,7 @@
 #    By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/02/20 16:02:18 by glacroix         ###   ########.fr        #
+#    Updated: 2024/02/23 17:50:28 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
 #SRC Details
 # **************************************************************************** #
-SRCS			= Contact.cpp
+SRCS			= Contact.cpp PhoneBook.cpp
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 
 #SRC & BONUS SRC Executions

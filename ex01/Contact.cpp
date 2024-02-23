@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/22 16:17:35 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:15:24 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,11 @@ void Contact::setDarkestSecret(){
 	getline(std::cin, this->DarkestSecret);
 }
 
-std::string Contact::getFirstName()
-{
-	std::cout << this->FirstName << '\n';
-	return this->FirstName;
-}
-
-std::string Contact::getLastName()
-{
-	std::cout << this->LastName << '\n';
-	return this->LastName;
-}
-std::string Contact::getNickname()
-{
-	std::cout << this->Nickname << '\n';
-	return this->Nickname;
-}
-std::string Contact::getPhoneNumber()
-{
-	std::cout << this->PhoneNumber << '\n';
-	return this->PhoneNumber;
-}
-std::string Contact::getDarkestSecret()
-{
-	std::cout << this->DarkestSecret << '\n';
-	return this->DarkestSecret;
-}
+std::string Contact::getFirstName()		{ return this->FirstName; }
+std::string Contact::getLastName()		{ return this->LastName; }
+std::string Contact::getNickname()		{ return this->Nickname; }
+std::string Contact::getPhoneNumber()	{ return this->PhoneNumber; }
+std::string Contact::getDarkestSecret() { return this->DarkestSecret; }
 
 int isnumber(std::string string)
 {
@@ -73,31 +52,41 @@ int isnumber(std::string string)
 	return 1;
 }
 
+
 Contact::Contact(void)
 {
 	std::cout << "Constructor has been called." << std::endl;
+	setter[0] = &Contact::setFirstName;
+	setter[1] = &Contact::setLastName;
+	setter[2] = &Contact::setNickname;
+	setter[3] = &Contact::setPhoneNumber;
+	setter[4] = &Contact::setDarkestSecret;
+
+	getter[0] = &Contact::getFirstName;
+	getter[1] = &Contact::getLastName;
+	getter[2] = &Contact::getNickname;
+	getter[3] = &Contact::getPhoneNumber;
+	getter[4] = &Contact::getDarkestSecret;
 }
 
-int main()
+void Contact::createContact()
 {
-	class Contact G;
 	for (int i = 0; i < 5; i++)
 	{
 		while (1)
 		{
-			(G.*setter[i])();
-			if ((G.*getter[i])().empty() == 1)
+			(this->*setter[i])();
+			if ((this->*getter[i])().empty() == 1)
 			{
 				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-				(G.*getter[i])().clear();
 				continue;
 			}
 			if (i == 3)
 			{
-				if (isnumber((G.*getter[i])()) == 0 || (G.*getter[i])().size() != 9)
+				if (isnumber((this->*getter[i])()) == 0 || (this->*getter[i])().size() != 9)
 				{
 					std::cout << RED << "Phone Numbers are consisted of 9 digits!" << RESET << std::endl;
-					(G.*getter[i])().clear();
+					(this->*getter[i])().clear();
 					continue;
 				}
 			}
@@ -105,5 +94,25 @@ int main()
 		}
 	}
 	std::cout << GREEN << "All fields are valid. Contact added!" << RESET << std::endl;
+}
+
+int main()
+{
+	Contact G;
+	G.createContact();
+	std::cout << MAGENTA << "First name is: " << G.getFirstName() << std::endl;
+	std::cout << "Last name is: " << G.getLastName() << std::endl;
+	std::cout << "Nickname is: " << G.getNickname() << std::endl;
+	std::cout << "Phonenumber is: " << G.getPhoneNumber() << std::endl;
+	std::cout << "DarkestSecret is: " << G.getDarkestSecret() << RESET << std::endl;
+	G.createContact();
+	std::cout << MAGENTA << "First name is: " << G.getFirstName() << std::endl;
+	std::cout << "Last name is: " << G.getLastName() << std::endl;
+	std::cout << "Nickname is: " << G.getNickname() << std::endl;
+	std::cout << "Phonenumber is: " << G.getPhoneNumber() << std::endl;
+	std::cout << "DarkestSecret is: " << G.getDarkestSecret() << RESET << std::endl;
 	return 0;
 }
+
+
+

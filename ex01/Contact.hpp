@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:25:15 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/22 16:17:38 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:09:59 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,38 +23,28 @@ class Contact {
 	std::string Nickname;
 	std::string PhoneNumber;
 	std::string DarkestSecret;
+	
 	public:
+		typedef void (Contact::* fp_s)(void);
+		typedef std::string (Contact::* fp_g)(void);
+
+		fp_s setter[5];
+		fp_g getter[5];
+
 		void setFirstName();
 		void setLastName();
 		void setNickname();
 		void setPhoneNumber();
 		void setDarkestSecret();
+		
 		std::string getFirstName();
 		std::string getLastName();
 		std::string getNickname();
 		std::string getPhoneNumber();
 		std::string getDarkestSecret();
-		void (Contact::*setter[5])();
-		std::string (Contact::*getter[5])();
-		Contact();
+		
+		void createContact();
+		Contact();	
 };
 
-typedef void (Contact::*fp_s)(void);
-typedef std::string (Contact::*fp_g)(void);
-	
-fp_s setter[5] = {
-	&Contact::setFirstName, 
-	&Contact::setLastName, 
-	&Contact::setNickname,
-	&Contact::setPhoneNumber,
-	&Contact::setDarkestSecret
-};
-
-fp_g getter[5] = { 
-	&Contact::getFirstName, 
-	&Contact::getLastName, 
-	&Contact::getNickname,
-	&Contact::getPhoneNumber,
-	&Contact::getDarkestSecret
-};
 #endif

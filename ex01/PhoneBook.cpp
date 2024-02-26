@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:44:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/26 18:09:44 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:12:03 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int Phonebook::executeInput(std::string input, int &count)
 	}*/
 }
 
-
+//TODO: compare with == rather than .compare()
 //need to take options from user input
 int main()
 {

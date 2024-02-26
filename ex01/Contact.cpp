@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/23 17:44:46 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:26:50 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void Contact::createContact()
 			{
 				//TODO: check for CTRL-D
 				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
+				//(this->*getter[i])().clear();
 				continue;
 			}
 			if (i == 3)

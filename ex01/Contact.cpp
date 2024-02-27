@@ -6,32 +6,32 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/26 15:26:50 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:01:50 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 void Contact::setFirstName(){
-	std::cout << "Please enter your contact's first name: ";
+	std::cout << ORANGE << "Please enter your contact's first name: " << RESET;
 	getline(std::cin, this->FirstName);
 }
 
 void Contact::setLastName(){
-	std::cout << "Please enter your contact's last name: ";
+	std::cout << ORANGE << "Please enter your contact's last name: " << RESET;
 	getline(std::cin, this->LastName);
 }
 
 void Contact::setNickname(){
-	std::cout << "Please enter your contact's nickname: ";
+	std::cout << ORANGE << "Please enter your contact's nickname: " << RESET;
 	getline(std::cin, this->Nickname);
 }
 void Contact::setPhoneNumber(){
-	std::cout << "Please enter your contact's phone number: ";
+	std::cout << ORANGE << "Please enter your contact's phone number: " << RESET;
 	getline(std::cin, this->PhoneNumber);
 }
 void Contact::setDarkestSecret(){
-	std::cout << "Please enter your contact's darkest secret: ";
+	std::cout << ORANGE << "Please enter your contact's darkest secret: " << RESET;
 	getline(std::cin, this->DarkestSecret);
 }
 
@@ -94,6 +94,6 @@ void Contact::createContact()
 			break;
 		}
 	}
-	std::cout << GREEN << "All fields are valid. Contact added!" << RESET << std::endl;
+	std::cout << LGREEN << "All fields are valid. Contact added!" << RESET << std::endl;
 }
 

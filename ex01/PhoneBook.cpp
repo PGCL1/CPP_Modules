@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:44:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 17:26:38 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:41:23 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void Phonebook::searchContact(int &count)
 	}
 	searchInstructions();
 	std::cout << "Count is " << count << std::endl;
-	for (int i = 1; i <= count; i++)
+	for (int i = 0; i <= count; i++)
 	{
+		if (i == 8)
+			break;
 		std::cout << std::right << std::setw(10) << i << " | ";
 		Contacts[i].showContactInfo();
 	}
@@ -71,7 +73,6 @@ void Phonebook::searchContact(int &count)
 	
 }
 
-//TODO: change count causing loss of all previous contacts
 int Phonebook::executeInput(std::string input, int &count)
 {
 	if (input == "ADD")

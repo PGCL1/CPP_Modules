@@ -6,13 +6,51 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:44:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 16:39:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:26:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 
-//TODO: fix count error prints 1 when count is 0
+static void searchInstructions()
+{
+	std::cout << LGREEN << std::right << std::setw(10) << "ID" << " | " <<
+		std::internal << std::setw(10) << "FIRST NAME" << " | " <<
+		std::right << std::setw(10) << "LAST NAME" << " | " << 
+		std::right << std::setw(10) << "NICKNAME" << " | " << 
+		std::right << RESET << std::endl;
+}
+
+static int idInput(int &count)
+{
+	int id;
+	while (1)
+	{
+		std::cout << LBLUE << "\nPlease enter your contact's ID: " << RESET;
+		std::string userInput;
+		getline(std::cin, userInput);
+		if (std::cin.eof())
+		{
+			std::cout << RED << "Bye bye, you quit the program" << RESET << std::endl;
+			exit (1);
+		}
+		std::istringstream convert(userInput);
+		if (!(convert >> id))
+		{
+			std::cout << RED << "ID are digits" << RESET;
+			continue;
+		}
+		else if (id < 1 || id > count)
+		{
+			std::cout << RED << "Out of range" << RESET;
+			continue;
+		} 
+		else
+			break;		
+	}
+	return (id);
+}
+
 void Phonebook::searchContact(int &count)
 {
 	if (count == 0)
@@ -21,26 +59,13 @@ void Phonebook::searchContact(int &count)
 		return ;
 	}
 	searchInstructions();
-	for (int i = 0; i < count; i++)
+	std::cout << "Count is " << count << std::endl;
+	for (int i = 1; i <= count; i++)
 	{
 		std::cout << std::right << std::setw(10) << i << " | ";
 		Contacts[i].showContactInfo();
 	}
-	std::cout << MAGENTA << "\nPlease enter your contact's ID: " << RESET;
-	std::string userInput;
-	getline(std::cin, userInput);
-	std::istringstream convert(userInput);
-	int id;
-	if ( !(convert >> id))
-	{
-		std::cout << RED << "ID are digits" << RESET << std::endl;
-		return;
-	}
-	else if (id < 0 || id > count)
-	{
-		std::cout << RED << "Out of range" << std::endl;
-		return;
-	} 
+	int id = idInput(count);	
 	Contacts[id].showIDInfo(id);
 	return ;
 	
@@ -51,10 +76,8 @@ int Phonebook::executeInput(std::string input, int &count)
 {
 	if (input == "ADD")
 	{
-		if (count == 8)
-			count = 0;
-		this->Contacts[count].createContact();
 		count++;
+		this->Contacts[count % 8].createContact();
 		return (0);
 	}
 	else if (input == "SEARCH")
@@ -73,7 +96,7 @@ int main()
 	int	count = 0;
 	while (1)
 	{
-		std::cout << LBLUE << "Please select one of the following options: ADD, SEARCH, EXIT" << RESET << std::endl;
+		std::cout << LBLUE << "Please select one of the following options (ADD, SEARCH, EXIT): " << RESET;
 		getline(std::cin, userInput);
 		if (std::cin.eof())
 		{

@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 16:09:08 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 16:10:20 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:52:48 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,4 @@ int isnumber(std::string string)
 			return 0;
 	}
 	return 1;
-}
-
-void searchInstructions()
-{
-	std::cout << GREEN << std::right << std::setw(10) << "ID" << " | " <<
-			std::internal << std::setw(10) << "FIRST NAME" << " | " <<
-			std::right << std::setw(10) << "LAST NAME" << " | " << 
-			std::right << std::setw(10) << "NICKNAME" << " | " << 
-			std::right << RESET << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 16:09:54 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:00:39 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,11 @@ void Contact::showContactInfo()
 
 void Contact::showIDInfo(int &id)
 {
-	std::cout << MAGENTA << "\nHere's ID " << id << "'s information" << RESET << std::endl;
-	std::cout << MAGENTA << "******************************************"<< RESET << std::endl;
+	std::cout << LGREEN << "\nHere's ID " << id << "'s information" << RESET << std::endl;
+	std::cout << LGREEN << "******************************************"<< RESET << std::endl;
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << (this->*getter[i])() << std::endl;
 	}
-	std::cout << MAGENTA << "******************************************\n"<< RESET << std::endl;
+	std::cout << LGREEN << "******************************************\n"<< RESET << std::endl;
 }

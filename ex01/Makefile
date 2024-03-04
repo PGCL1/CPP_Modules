@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glacroix <glacroix@student.42madrid>       +#+  +:+       +#+         #
+#    By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/03/01 18:23:52 by glacroix         ###   ########.fr        #
+#    Updated: 2024/03/04 16:23:46 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
 #SRC Details
 # **************************************************************************** #
-SRCS			= Contact.cpp Phonebook.cpp
+SRCS			= Contact.cpp Phonebook.cpp Utils.cpp
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 
 #SRC & BONUS SRC Executions

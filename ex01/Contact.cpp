@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/02/27 16:01:50 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:09:54 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,6 @@ std::string Contact::getNickname()		{ return this->Nickname; }
 std::string Contact::getPhoneNumber()	{ return this->PhoneNumber; }
 std::string Contact::getDarkestSecret() { return this->DarkestSecret; }
 
-int isnumber(std::string string)
-{
-	size_t i = 0;
-	for (; i < string.size(); i++)
-	{
-		if (isdigit(string[i]) == 0)
-			return 0;
-	}
-	return 1;
-}
-
 
 Contact::Contact(void)
 {
@@ -75,11 +64,14 @@ void Contact::createContact()
 		while (1)
 		{
 			(this->*setter[i])();
+			if (std::cin.eof())
+			{
+				std::cout << RED << "Bye bye, you quit the program" << RESET << std::endl;
+				exit(1);
+			}
 			if ((this->*getter[i])().empty() == 1)
 			{
-				//TODO: check for CTRL-D
 				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
-				//(this->*getter[i])().clear();
 				continue;
 			}
 			if (i == 3)
@@ -97,3 +89,30 @@ void Contact::createContact()
 	std::cout << LGREEN << "All fields are valid. Contact added!" << RESET << std::endl;
 }
 
+void Contact::showContactInfo()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if ((this->*getter[i])().size() >= 10)
+		{
+			std::string s = (this->*getter[i])();
+			s.resize(9);
+			s += ".";
+			std::cout << std::right << std::setw(10) << s << " | ";
+		}
+		else
+			std::cout << std::right << std::setw(10) << (this->*getter[i])() << " | ";
+	}
+	std::cout << std::endl;
+}
+
+void Contact::showIDInfo(int &id)
+{
+	std::cout << MAGENTA << "\nHere's ID " << id << "'s information" << RESET << std::endl;
+	std::cout << MAGENTA << "******************************************"<< RESET << std::endl;
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << (this->*getter[i])() << std::endl;
+	}
+	std::cout << MAGENTA << "******************************************\n"<< RESET << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:44:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 17:41:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:36:57 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int idInput(int &count)
 			std::cout << RED << "ID are digits" << RESET;
 			continue;
 		}
-		else if (id < 1 || id > count)
+		else if (id <= 0 || id > count || id > 8)
 		{
 			std::cout << RED << "Out of range" << RESET;
 			continue;
@@ -48,7 +48,7 @@ static int idInput(int &count)
 		else
 			break;		
 	}
-	return (id);
+	return (id - 1);
 }
 
 void Phonebook::searchContact(int &count)
@@ -59,15 +59,14 @@ void Phonebook::searchContact(int &count)
 		return ;
 	}
 	searchInstructions();
-	std::cout << "Count is " << count << std::endl;
-	for (int i = 0; i <= count; i++)
+	for (int i = 0; i < count; i++)
 	{
 		if (i == 8)
 			break;
-		std::cout << std::right << std::setw(10) << i << " | ";
+		std::cout << std::right << std::setw(10) << i + 1 << " | ";
 		Contacts[i].showContactInfo();
 	}
-	int id = idInput(count);	
+	int id = idInput(count);
 	Contacts[id].showIDInfo(id);
 	return ;
 	
@@ -77,8 +76,8 @@ int Phonebook::executeInput(std::string input, int &count)
 {
 	if (input == "ADD")
 	{
-		count++;
 		this->Contacts[count % 8].createContact();
+		count++;
 		return (0);
 	}
 	else if (input == "SEARCH")

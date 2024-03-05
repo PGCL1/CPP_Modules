@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:23:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/04 17:00:39 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:27:51 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,15 @@ void Contact::createContact()
 				std::cout << RED << "This field cannot be empty!" << RESET << std::endl;
 				continue;
 			}
-			if (i == 3)
-			{
-				if (isnumber((this->*getter[i])()) == 0 || (this->*getter[i])().size() != 9)
-				{
-					std::cout << RED << "Phone Numbers are consisted of 9 digits!" << RESET << std::endl;
-					(this->*getter[i])().clear();
-					continue;
-				}
-			}
+			// if (i == 3)
+			// {
+			// 	if (isnumber((this->*getter[i])()) == 0 || (this->*getter[i])().size() != 9)
+			// 	{
+			// 		std::cout << RED << "Phone Numbers are consisted of 9 digits!" << RESET << std::endl;
+			// 		(this->*getter[i])().clear();
+			// 		continue;
+			// 	}
+			// }
 			break;
 		}
 	}
@@ -108,7 +108,7 @@ void Contact::showContactInfo()
 
 void Contact::showIDInfo(int &id)
 {
-	std::cout << LGREEN << "\nHere's ID " << id << "'s information" << RESET << std::endl;
+	std::cout << LGREEN << "\nHere's ID " << id + 1 << "'s information" << RESET << std::endl;
 	std::cout << LGREEN << "******************************************"<< RESET << std::endl;
 	for (int i = 0; i < 5; i++)
 	{

@@ -30,7 +30,7 @@ NAME			= zombiesss
 # **************************************************************************** #
 CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
-#CFLAGS			+= -g -fsanitize=address
+CDEBUG			= -g3 -fsanitize=address
 
 #SRC Details
 # **************************************************************************** #

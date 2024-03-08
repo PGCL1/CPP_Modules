@@ -12,3 +12,8 @@
 
 #include "Zombie.hpp"
 
+Zombie *newZombie( std::string name )
+{
+	Zombie *death = new Zombie(name);
+	return death;	
+}

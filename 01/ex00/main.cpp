@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:58:17 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/07 12:15:47 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:04:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,24 @@
 
 int main()
 {
-	Zombie test = newZombie("this is a test");
-	Zombie test1 = newZombie("test 1");
-	Zombie test2 = newZombie("test 2");
-	Zombie test3 = newZombie("test 3");
+	Zombie *test = newZombie("Santi");
+	test->announce();
+	test->~Zombie();
+
+	std::cout << std::endl;
+
+	Zombie *test1 = newZombie("Augustin");
+	test1->announce();
+	test1->~Zombie();
+
+	std::cout << std::endl;
+
+	Zombie *test2 = newZombie("G");
+	test2->announce();
+	test2->~Zombie();
+
+	std::cout << std::endl;
+
+	randomChump("Vio");
 	return 0;
 }

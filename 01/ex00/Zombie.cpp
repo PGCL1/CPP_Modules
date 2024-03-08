@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:52:35 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/08 17:04:00 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/08 22:20:48 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void Zombie::announce(void)
 
 Zombie::~Zombie()
 {
-	std::cout << this-> name << " DESTRUCTED" << std::endl;
+	std::cout << this->name << " DESTRUCTED" << std::endl;
 }

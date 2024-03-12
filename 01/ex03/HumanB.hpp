@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:56:27 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/11 19:00:29 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:21:10 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 #include "Weapon.hpp"
 
 class HumanB{
-    class Weapon;
+    Weapon choice;
     std::string name;
     
     public:
     void attack();
+    void setWeapon(Weapon &choice);
 
-    HumanB();
+    HumanB(std::string const name);
     ~HumanB();
 };
 

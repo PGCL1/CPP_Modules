@@ -6,7 +6,7 @@
 #    By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/03/11 18:38:48 by glacroix         ###   ########.fr        #
+#    Updated: 2024/03/12 15:25:49 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
 #SRC Details
 # **************************************************************************** #
-SRCS			= main.cpp
+SRCS			= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 
 #SRC & BONUS SRC Executions

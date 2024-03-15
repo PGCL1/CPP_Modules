@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:08:17 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/15 15:48:58 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:05:46 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ int main(int argc, char **argv)
 	{
 		while (!infile.eof())
 		{
-			getline(infile, line);
+			//check if function getline fails
+			getline(infile, line)
 			std::size_t found = line.find(s1);
   			if (found != std::string::npos)
 			{
-				repeat:
+ 			 	repeat:
 				pos = line.find(s1);
-				line.erase(line.find(s1), s1.size());
+				line.erase(pos, s1.size());
 				newline = line.insert(pos, s2);
 				if (line.find(s1) != std::string::npos)
 					goto repeat;

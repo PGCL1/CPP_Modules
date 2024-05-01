@@ -6,20 +6,14 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:58:17 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/08 22:10:16 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:25:00 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void ft_leaks()
-{
-	system("leaks -q zombiesss");
-}
-
 int main()
 {
-	atexit(ft_leaks);
 	Zombie *test = newZombie("Santi");
 	test->announce();
 	test->~Zombie();

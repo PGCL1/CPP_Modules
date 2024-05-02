@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:08:17 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/02 15:03:02 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:36:20 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 	std::string new_filename = filename.c_str(); 
 	new_filename +=	".replace";
 	std::ofstream outfile(new_filename.c_str());
-
 	
 	int pos;
 	std::string line;
@@ -55,15 +54,10 @@ int main(int argc, char **argv)
 			std::size_t found = line.find(s1);
   			if (found != std::string::npos)
 			{
-					//repeat:
 				pos = line.find(s1);
-				std::cout << "Pos = " << pos << std::endl;
-				std::cout << "line = " << line << std::endl;
 				line.erase(pos, s1.size());
-				std::cout << "after line = " << line << std::endl;
 				newline = line.insert(pos, s2);
-				//if (line.find(s1) != std::string::npos)
-					//goto repeat;
+				line.erase(0 ,pos);
 				outfile << newline.append("\n");
 			}
 			else

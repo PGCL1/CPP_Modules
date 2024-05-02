@@ -6,23 +6,15 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:39:49 by glacroix          #+#    #+#             */
-/*   Updated: 2024/03/12 16:23:46 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:17:40 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-static void ft_leaks()
-{
-    std::cout << std::endl;
-    system("leaks -q violence");
-    std::cout << std::endl;
-}
-
 int main()
 {
-    atexit(ft_leaks);
     Weapon club = Weapon("crude spiked club");
     
     HumanA bob("Bob", club);

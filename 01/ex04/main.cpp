@@ -38,30 +38,39 @@ int main(int argc, char **argv)
 	new_filename +=	".replace";
 	std::ofstream outfile(new_filename.c_str());
 	
-	int pos;
+	size_t pos;
 	std::string line;
 	std::string newline;
 	
 	std::string s1 (argv[2]);
 	std::string s2 (argv[3]);
+	if (s1 == s2)
+	{
+		while (getline(infile, line))
+			outfile << line.append("\n");
+		infile.close();
+		return (0);
+	}
 	if (inputHandling(s1))
 		return (2);
 	if (infile.is_open())
 	{
-		while (!infile.eof())
+		while (getline(infile, line))
 		{
-			getline(infile, line);
-			std::size_t found = line.find(s1);
-  			if (found != std::string::npos)
+			pos = line.find(s1, 0);
+			if (pos == std::string::npos)
 			{
-				pos = line.find(s1);
+				outfile << line.append("\n");
+				continue;
+			}
+			while (pos != std::string::npos)
+			{
+				
 				line.erase(pos, s1.size());
 				newline = line.insert(pos, s2);
-				line.erase(0 ,pos);
-				outfile << newline.append("\n");
+				pos = line.find(s1);
 			}
-			else
-				outfile << line.append("\n");
+			outfile << newline << std::endl;
 		}
 		infile.close();
 		return (0);

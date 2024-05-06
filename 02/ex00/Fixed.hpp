@@ -18,9 +18,15 @@
 class Fixed {
 	int number;
 	const int fractional;
+
 		public:
 	void setRawBits(int const raw);
 	int	getRawBits(void);
-}
+
+	Fixed();
+	Fixed(Fixed& _f);
+//	Fixed& operator=(const Fixed& copy);
+	~Fixed();
+};
 
 #endif

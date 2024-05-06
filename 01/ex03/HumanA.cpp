@@ -15,7 +15,6 @@
 HumanA::HumanA(std::string const name, Weapon &_choice) : choice(_choice)
 {
     this->name = name;
-    //weapon is set in constructor
 }
 
 void HumanA::attack()

@@ -11,3 +11,25 @@
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+Fixed::Fixed() : fractional(8)
+{
+    std::cout << "Default Constructor called" << std::endl;
+    this->number = 0;
+}
+
+//copy
+Fixed::Fixed(Fixed& _f) : fractional(8)
+{
+    std::cout << "Copy constructor called" << std::endl;
+   this->number = _f.number;
+}  
+
+//assignement operator overload
+
+
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}

@@ -15,7 +15,8 @@
 
 #include "Weapon.hpp"
 
-class HumanA{
+class HumanA
+{
     Weapon &choice;
     std::string name;
     

@@ -14,9 +14,16 @@
 
 int main()
 {
-    Zombie *test = zombieHorde(4, "this is a test");
-    for (int i = 0; i < 4; i++)
-        test->announce();
+    int quantity = -1;
+    if (quantity < 0)
+    {
+        std::cout << "ERROR: quantity should be a positive integer" << std::endl;
+        return (1);
+    }
+    Zombie *test = zombieHorde(quantity, "Zombie Clone");
+    for (int i = 0; i < quantity; i++)
+        test[i].announce();
+    std::cout << std::endl;
     delete [] test;
     return 0;
 }

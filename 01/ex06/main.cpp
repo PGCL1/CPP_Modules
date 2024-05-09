@@ -16,8 +16,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		std::cout << RED << "ERROR: " << RESET
-			<< "enter a filter (DEBUG, INFO, WARNING, ERROR)" << std::endl;
+		std::cout << "ERROR: enter a filter (DEBUG, INFO, WARNING, ERROR)" << std::endl;
 		return (1);
 	}
 	Harl test;

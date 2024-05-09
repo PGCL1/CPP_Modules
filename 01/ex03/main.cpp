@@ -26,7 +26,9 @@ int main()
     std::cout << std::endl;
 
     HumanB jim("Jim");
-    jim.setWeapon(club);
+    jim.setWeapon(&club);
+    jim.attack();
+    jim.setWeapon(NULL);
     jim.attack();
     club.setType("some other type of club");
     jim.attack();

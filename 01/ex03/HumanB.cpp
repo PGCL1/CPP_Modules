@@ -17,14 +17,23 @@ HumanB::HumanB(std::string const name)
     this->name = name;
 }
 
-void HumanB::setWeapon(Weapon &choice)
+void HumanB::setWeapon(Weapon *choice)
 {
+    if (choice)
+        std::cout << this->name << " now has a new weapon: " << choice->getType() << std::endl;
+    else
+        std::cout << this->name << " was given no weapon" << std::endl;
     this->choice = choice;
 }
 
 void HumanB::attack()
 {
-    std::cout << this->name << " attacks with their " << this->choice.getType() << std::endl;
+    if (this->choice == NULL)
+    {
+        std::cout << this->name << " attacks with their hands" << std::endl;
+        return ;
+    }
+    std::cout << this->name << " attacks with their " << this->choice->getType() << std::endl;
 }
 
 HumanB::~HumanB() 

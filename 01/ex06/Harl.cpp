@@ -63,7 +63,7 @@ void Harl::complain(std::string level)
         case 3:
             this->error();
             break;
-        case 4:
+        default:
             std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
     }
 }

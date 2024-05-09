@@ -60,8 +60,8 @@ void Harl::complain(std::string level)
         case 3:
             this->error();
             break;
-        case 4:
-            std::cout << RED << "ERROR: This is not an accepted option" << RESET << std::endl;
+        default:
+            std::cout << "ERROR: This is not an accepted option" << std::endl;
             break;
     }
 }

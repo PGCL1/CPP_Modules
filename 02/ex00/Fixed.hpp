@@ -21,7 +21,7 @@ class Fixed {
 
 		public:
 	void setRawBits(int const raw);
-	int	getRawBits(void);
+	int	getRawBits(void) const;
 
 	Fixed();
 	Fixed(Fixed& _f);

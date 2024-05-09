@@ -29,6 +29,19 @@ Fixed::Fixed(Fixed& _f) : fractional(8)
 
 
 
+void Fixed::setRawBits(int const raw)
+{
+    std::cout << "setRawBits member function called" << std::endl;
+    //what is the raw value
+
+}
+
+int Fixed::getRawBits(void) const 
+{
+    std::cout << "getRawBits member function called" << std::endl;
+    return (/*something*/);
+}
+
 Fixed::~Fixed()
 {
     std::cout << "Destructor called" << std::endl;

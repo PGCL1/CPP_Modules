@@ -15,6 +15,7 @@
 HumanB::HumanB(std::string const name) 
 { 
     this->name = name;
+    this->choice = NULL;
 }
 
 void HumanB::setWeapon(Weapon *choice)

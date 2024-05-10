@@ -16,17 +16,17 @@
 #include <iostream>
 
 class Fixed {
-	int number;
-	const int fractional;
+	private:
+		int number;
+		static const int fractional = 8;
 
-		public:
-	void setRawBits(int const raw);
-	int	getRawBits(void) const;
-
-	Fixed();
-	Fixed(Fixed& _f);
-//	Fixed& operator=(const Fixed& copy);
-	~Fixed();
+	public:
+		void setRawBits(int const raw);
+		int	getRawBits(void) const;
+		Fixed();
+		Fixed(const Fixed& _f);
+		void operator=(const Fixed& copy);
+		~Fixed();
 };
 
 #endif

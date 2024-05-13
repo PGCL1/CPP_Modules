@@ -15,7 +15,20 @@
 Fixed::Fixed() 
 {
     std::cout << "Default Constructor called" << std::endl;
-    this->number = 0;
+}
+
+Fixed::Fixed(const int num) 
+{
+    std::cout << "Int Constructor called" << std::endl;
+    this->number = num;
+    this->number <<= 8;
+}
+
+
+Fixed::Fixed(const float num)
+{
+    std::cout << "Float Constructor called" << std::endl;
+    this->number = num * (1 << 8);
 }
 
 //copy
@@ -28,12 +41,28 @@ Fixed::Fixed(const Fixed& _f)
 //assignement operator overload
 Fixed& Fixed::operator=(const Fixed &copy)
 {
-    std::cout << "Assignement operator overload called" << std::endl;
+    std::cout << "Copy Assignement operator called" << std::endl;
     if (this != &copy)
         this->number = copy.number;
     return *this;
 }
 
+/*Fixed& Fixed::operator <<(std::ostream &output, Fixed &_f)
+{
+    return ();  
+}*/
+
+float Fixed::toFloat(void) const
+{
+    float result = this->number / (1 << 8);
+    return (result);
+}
+
+int Fixed::toInt(void) const
+{
+    int result = this->number / (1 << 8);
+    return (roundf(result));
+}
 
 void Fixed::setRawBits(int const raw)
 {

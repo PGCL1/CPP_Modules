@@ -102,43 +102,65 @@ bool Fixed::operator!=(const Fixed& copy)
 
 Fixed& Fixed::operator+(const Fixed& copy)
 {
-    std::cout << "number = " << this->number << " copy = " << copy.number << std::endl;
     this->number += copy.number;
     return *this;
 }
 
 Fixed& Fixed::operator-(const Fixed& copy)
 {
-    std::cout << "number = " << this->number << " copy = " << copy.number << std::endl;
     this->number -= copy.number;
     return *this;
 }
 
 Fixed& Fixed::operator*(const Fixed& copy)
 {
-    //this->number *= copy.number;
-    std::cout << "number = " << this->number << " copy = " << copy.number << std::endl;
     this->number = this->number * copy.number;
     this->number = this->toFloat();
     return *this;
 }
 
-//celui la fonctionne pas
 Fixed& Fixed::operator/(const Fixed& copy)
 {
     this->number /= copy.number;
-    std::cout << "number = " << this->number << " copy = " << copy.toFloat() << std::endl;
+    this->number *= (1 << 8);
     return *this;
 }
 
-/*
+Fixed& Fixed::max(Fixed& first, Fixed& second)
+{
+    if (first.number > second.number)
+        return (first);
+    return (second);
+}
+
+Fixed Fixed::max(const Fixed& first, const Fixed& second)
+{
+    if (first.number > second.number)
+        return (first);
+    return (second);
+}
+
+Fixed& Fixed::min(Fixed& first, Fixed& second)
+{
+    if (first.number < second.number)
+        return (first);
+    return (second);
+}
+
+Fixed Fixed::min(const Fixed& first, const Fixed& second)
+{
+    if (first.number < second.number)
+        return (first);
+    return (second);
+}
+
 Fixed& Fixed::operator=(const Fixed &copy)
 {
     if (this != &copy)
         this->number = copy.number;
     return *this;
 }
-*/
+
 std::ostream& operator<< (std::ostream &output, const Fixed& _f)
 {
     output << _f.toFloat();

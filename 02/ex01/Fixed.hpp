@@ -32,8 +32,9 @@ class Fixed {
 		Fixed(const float num);
 		Fixed(const Fixed& _f);
 		Fixed& operator=(const Fixed& copy);
-		//Fixed& operator<<(std::ostream &output, Fixed& _f);
 		~Fixed();
 };
+
+std::ostream& operator<< (std::ostream &output, const Fixed& _f);
 
 #endif

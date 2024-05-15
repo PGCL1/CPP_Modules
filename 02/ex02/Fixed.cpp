@@ -128,30 +128,22 @@ Fixed& Fixed::operator/(const Fixed& copy)
 
 Fixed& Fixed::max(Fixed& first, Fixed& second)
 {
-    if (first.number > second.number)
-        return (first);
-    return (second);
+    return (first.number > second.number ? first : second);
 }
 
 Fixed Fixed::max(const Fixed& first, const Fixed& second)
 {
-    if (first.number > second.number)
-        return (first);
-    return (second);
+    return (first.number > second.number ? first : second);
 }
 
 Fixed& Fixed::min(Fixed& first, Fixed& second)
 {
-    if (first.number < second.number)
-        return (first);
-    return (second);
+    return (first.number < second.number ? first : second);
 }
-
+//ternaries
 Fixed Fixed::min(const Fixed& first, const Fixed& second)
 {
-    if (first.number < second.number)
-        return (first);
-    return (second);
+    return (first.number < second.number ? first : second);
 }
 
 Fixed& Fixed::operator=(const Fixed &copy)

@@ -3,37 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:57:32 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/03 18:58:48 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/26 20:41:03 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
 int main()
 {
-	std::cout << std::boolalpha;
-	Fixed a;
-	Fixed const b(Fixed(5.05f) / Fixed(2));
+	Point a(1, 1);
+	Point b(2, 3);
+	Point c(2, 5);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	
-	std::cout << (a == b) << std::endl;
-	std::cout << (a != b) << std::endl;
-	std::cout << (a >= b) << std::endl;
-	std::cout << (a <= b) << std::endl;
-	std::cout << (a > b) << std::endl;
-	std::cout << (a < b) << std::endl;
-
-	std::cout << b << std::endl;
-	//std::cout << b << std::endl;
-	//std::cout << Fixed::max(a, b) << std::endl;
-	
+	Point p(3, 1);
+	std::cout << bsp(a, b, c, p) << std::endl;
 	return 0;
 }

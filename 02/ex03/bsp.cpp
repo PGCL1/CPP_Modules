@@ -24,5 +24,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const p)
 	
 	float area_pab = (a.getX() *(b.getY() - p.getY()) + b.getX() * (p.getY() - a.getY()) + p.getX() * (a.getY() - b.getY()) )/2;
 
-	return (area_pbc + area_pab + area_pac == area ? true : false);
+	if (area_pbc + area_pab + area_pac == area)
+		return true;
+	return (false);
 }

@@ -16,12 +16,9 @@
 #include "Fixed.hpp"
 
 class Point {
-	//problem comes from not being able to modify Fixed const in constructors
 	private:
 		Fixed const x;
 		Fixed const y;
-		//Fixed x;
-		//Fixed y;
 		
 	public:
 		Point();

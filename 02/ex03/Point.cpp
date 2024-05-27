@@ -16,8 +16,13 @@ Point::Point() : x(0), y(0)
 {
 }
 
-Point::Point(float const _x, float const _y) : x(_x.toFloat()), y(_y.toFloat())
+Point::Point(float const _x, float const _y)
 {
+	Fixed& newX = const_cast <Fixed &> (this->x);
+	Fixed& newY = const_cast <Fixed &> (this->y);
+
+	newX = _x;
+	newY = _y;
 }
 
 float Point::getX() const
@@ -32,11 +37,12 @@ float Point::getY() const
 
 Point& Point::operator=(const Point& original) 
 {
-	Point test(original.x, original.y);
+	Fixed& newX = const_cast <Fixed &> (this->x);
+	Fixed& newY = const_cast <Fixed &> (this->y);
     if (this != &original)
 	{
-        this->x = original.x;
-		this->y = original.y;
+        newX = original.x;
+		newY = original.y;
 	}
     return *this;
 }

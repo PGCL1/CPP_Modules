@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:00:56 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/26 23:08:54 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:11:59 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ float Point::getX() const
 float Point::getY() const
 {
 	return y.toFloat();
+}
+
+Point::Point(const Point& _Point)
+{
+	Fixed& newX = const_cast <Fixed &> (this->x);
+	Fixed& newY = const_cast <Fixed &> (this->y);	
+    newX = _Point.x;
+	newY = _Point.y;
 }
 
 Point& Point::operator=(const Point& original) 

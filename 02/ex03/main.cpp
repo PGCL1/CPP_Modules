@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:57:32 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/26 20:41:03 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:14:14 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int main()
 	Point b(2, 3);
 	Point c(2, 5);
 
-	Point p(1, 2);
-
-	
 	std::cout << bsp(a, b, c, p) << std::endl;
 	return 0;
 }

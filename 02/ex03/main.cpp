@@ -19,6 +19,7 @@ int main()
 	Point b(2, 3);
 	Point c(2, 5);
 
+	Point p(1.5, 2);
 	std::cout << bsp(a, b, c, p) << std::endl;
 	return 0;
 }

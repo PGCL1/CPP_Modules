@@ -22,7 +22,6 @@ Fixed::Fixed(const int num)
     this->number = roundf(float(num) * float(1 << 8));
 }
 
-
 Fixed::Fixed(const float num)
 {
     this->number = roundf(float(num) * float(1 << 8));
@@ -158,6 +157,5 @@ std::ostream& operator<< (std::ostream &output, const Fixed& _f)
     output << _f.toFloat();
     return output;
 }
-
 
 Fixed::~Fixed() {}

@@ -6,14 +6,14 @@
 /*   By: glacroix <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:00:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/03 19:02:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:59:31 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Fixed {
 	private:

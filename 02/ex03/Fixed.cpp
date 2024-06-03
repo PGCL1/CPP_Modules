@@ -42,7 +42,6 @@ Fixed::Fixed(const Fixed& _f)
     this->number = _f.number;
 }  
 
-
 Fixed Fixed::operator++()
 {
     ++number;

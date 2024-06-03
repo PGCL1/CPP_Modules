@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:01:13 by glacroix          #+#    #+#             */
-/*   Updated: 2024/05/29 17:09:49 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:47:32 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ class Point {
 		Fixed const y;
 		
 	public:
-		Point();
-		Point(float const _x, float const _y);
 		float getX(void) const;	
 		float getY(void) const;	
 		int getXFixed(void) const;	
 		int getYFixed(void) const;	
+
+        Point();
+        Point(float const _x, float const _y);
 		Point(const Point& _Point);
-		//copy constructor
 		Point&  operator=(const Point& original);
 		~Point();
 };

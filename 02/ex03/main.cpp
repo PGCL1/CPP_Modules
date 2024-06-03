@@ -18,8 +18,11 @@ int main()
 	Point a(1, 1);
 	Point b(2, 3);
 	Point c(2, 5);
-
+	
 	Point p(1.5, 2);
-	std::cout << bsp(a, b, c, p) << std::endl;
+	std::cout << "Point P is within the triangle ABC: " << bsp(a, b, c, p) << std::endl;
+	
+	Point p1(0, 0);
+	std::cout << "Point P1 is within the triangle ABC: " << bsp(a, b, c, p1) << std::endl;
 	return 0;
 }

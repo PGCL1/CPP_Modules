@@ -2,7 +2,7 @@
 
 int main()
 {
-	ClapTrap test("Margue");
+	ClapTrap test("Test");
 
 	test.takeDamage(10);
 	test.beRepaired(5);

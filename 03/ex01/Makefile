@@ -32,7 +32,7 @@ endif
 
 #Program
 # **************************************************************************** #
-NAME			= claptrap 
+NAME			= scavtrap 
 
 #Execution
 # **************************************************************************** #
@@ -42,14 +42,16 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
-			  ClapTrap.cpp
+			  ClapTrap.cpp \
+			  ScavTrap.cpp
+
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 
 #SRC & BONUS SRC Executions
 # **************************************************************************** #
 $(NAME): objs $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo $(MAGENTA) "\n~~~~~~~~~ Clap Trap compiled! ~~~~~~~~\n" $(RESET)
+	@echo $(MAGENTA) "\n~~~~~~~~~ Scav Trap compiled! ~~~~~~~~\n" $(RESET)
 
 #Makefile Commands
 # **************************************************************************** #

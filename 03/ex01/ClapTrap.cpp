@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string _name)
+ClapTrap::ClapTrap(const std::string& _name)
 {
 	this->name = _name;
 	this->hitPoints = 10; 
@@ -25,8 +25,8 @@ void ClapTrap::attack(const std::string& target)
 	if (this->energyPoints && this->hitPoints)
 	{
 		this->energyPoints -= 1;
-		std::cout << "ClapTrap " << this->name << "attacks " << target 
-            << "causing " << this->getAttackDamage() << "points of damage" <<  std::endl;
+		std::cout << "ClapTrap " << this->name << " attacks " << target 
+            << ", causing " << this->getAttackDamage() << " points of damage" <<  std::endl;
 	}
 }
 

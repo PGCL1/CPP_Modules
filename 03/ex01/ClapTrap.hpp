@@ -6,7 +6,7 @@
 #include <string>
 
 class ClapTrap {
-	private:
+	protected:
 		std::string name;
 		unsigned int hitPoints;
 		unsigned int energyPoints;
@@ -17,7 +17,8 @@ class ClapTrap {
 		void beRepaired(unsigned int amount);
         unsigned int getAttackDamage();
 
-		ClapTrap(std::string _name);
+		ClapTrap();
+		ClapTrap(const std::string& _name);
 		ClapTrap(const ClapTrap& _f);
 		ClapTrap& operator=(ClapTrap& copy);
 		~ClapTrap();

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 18:10:59 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/05 18:24:47 by glacroix         ###   ########.fr       */
+/*   Created: 2024/06/05 16:22:22 by glacroix          #+#    #+#             */
+/*   Updated: 2024/06/05 18:13:17 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#include "ScavTrap.hpp"
 
-#include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+int main()
 {
-    public:
-        void guardGate();
-        std::string getName();
-        void print();
-        void attack(const std::string& target); 
+    ScavTrap test("Adri");
 
-        ScavTrap(const std::string &name);
-        ~ScavTrap();
-};
-
-# endif
+    test.print();
+    test.attack("Bi");
+    test.guardGate();
+    return (0);
+}

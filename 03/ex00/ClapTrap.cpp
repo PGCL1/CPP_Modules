@@ -25,8 +25,8 @@ void ClapTrap::attack(const std::string& target)
 	if (this->energyPoints && this->hitPoints)
 	{
 		this->energyPoints -= 1;
-		std::cout << "ClapTrap " << this->name << "attacks " << target <<
-		"causing " << this->getAttackDamage() << "points of damage" <<  std::endl;
+		std::cout << "ClapTrap " << this->name << "attacks " << target 
+            << "causing " << this->getAttackDamage() << "points of damage" <<  std::endl;
 	}
 }
 
@@ -58,7 +58,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::ClapTrap(const ClapTrap& _f)
 {
-	std::cout << "ClapTrap " << this->name << "copying attributes of ClapTrap " << _f.name << std::endl;
+	std::cout << "ClapTrap " << this->name << " copying attributes of ClapTrap " << _f.name << std::endl;
 	this->name = _f.name;
 	this->hitPoints = _f.hitPoints; 
 	this->energyPoints = _f.energyPoints;

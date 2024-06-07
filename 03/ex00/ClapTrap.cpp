@@ -10,7 +10,7 @@ ClapTrap::ClapTrap(std::string _name)
 		RESET << std::endl;
 }
 
-unsigned int ClapTrap::getAttackDamage()
+unsigned int ClapTrap::getAttackDamage() const
 {
     return this->attackDamage;
 }

@@ -58,12 +58,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::ClapTrap(const ClapTrap& _f)
 {
-	std::cout << "ClapTrap " << this->name << " copying attributes of ClapTrap " << _f.name << std::endl;
+	std::cout << "ClapTrap copying attributes" << std::endl;
 	this->name = _f.name;
 	this->hitPoints = _f.hitPoints; 
 	this->energyPoints = _f.energyPoints;
 	this->attackDamage = _f.attackDamage;
-	std::cout << "ClapTrap finished copying attributes" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap& copy)

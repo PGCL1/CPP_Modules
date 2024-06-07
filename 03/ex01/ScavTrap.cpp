@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/05 18:25:35 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:49:10 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
     this->hitPoints = 100;
     this->energyPoints = 50;
     this->attackDamage = 20;
-	std::cout << MAGENTA <<"ScavTrap " << this->name << " is alive" << RESET << std::endl; 
+	std::cout << GREEN << "ScavTrap " << this->name << " is alive" << RESET << std::endl; 
 }
 
 void ScavTrap::guardGate()
@@ -29,14 +29,16 @@ void ScavTrap::attack(const std::string& target)
 {
     if (this->hitPoints <= 0)
     {
-        std::cout << "Scavtrap " << this->name << " is dead, it cannot attack" << this->name << std::endl;
+        std::cout << "Scavtrap " << this->name 
+            << " is dead, it's not going to move" << this->name << std::endl;
         return;
     }
 	if (this->energyPoints && this->hitPoints)
 	{
 		this->energyPoints -= 1;
-		std::cout << "ScavTrap " << this->name << " attacks " << target 
-            << ", causing " << this->getAttackDamage() << " points of damage" <<  std::endl;
+		std::cout << "ScavTrap " << this->name << " attacks with fear of retaliation" 
+            << target << ", causing " << this->getAttackDamage() 
+            << " points of damage" <<  std::endl;
 	}
     
 }
@@ -54,8 +56,28 @@ std::string ScavTrap::getName()
     return (this->name);
 }
 
+ScavTrap::ScavTrap(const ScavTrap& _f) : ClapTrap(_f)
+{
+	std::cout << "ScavTrap copying attributes" << std::endl;
+	this->name = _f.name;
+	this->hitPoints = _f.hitPoints; 
+	this->energyPoints = _f.energyPoints;
+	this->attackDamage = _f.attackDamage;
+}
+
+ScavTrap &ScavTrap::operator=(ScavTrap& copy)
+{
+	if (this != &copy) 
+    {
+        this->name = copy.name;
+		this->hitPoints = copy.hitPoints; 
+		this->energyPoints = copy.energyPoints;
+		this->attackDamage = copy.attackDamage;
+	}
+    return (*this);
+}
 ScavTrap::~ScavTrap() 
 {
-    std::cout << ORANGE << "ScavTrap " << this->name
-        << " has been destroyed and as a result is dead" << RESET << std::endl;
+    std::cout << RED << "ScavTrap " << this->name
+        << " has given its life for the greater good" << RESET << std::endl;
 }

@@ -14,10 +14,21 @@
 
 int main()
 {
-    ScavTrap test("Adri");
+    std::cout << ROSE << "\nI will create: Adri ScavTrap" << RESET << std::endl; 
+    ScavTrap obj("Adri");
 
-    test.print();
-    test.attack("Bi");
-    test.guardGate();
+    //obj.print();
+    obj.attack("a big boar");
+    obj.guardGate();
+
+    std::cout << ROSE << "\nI will create: Maria ScavTrap" << RESET << std::endl; 
+    ScavTrap another("Maria");
+    another = obj;
+    another.print();
+
+    std::cout << ROSE << "\nI will create: a Adri ScavTrap clone" << RESET << std::endl; 
+    ScavTrap AdriClone(obj);
+    AdriClone.print();
+
     return (0);
 }

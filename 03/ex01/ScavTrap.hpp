@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:10:59 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/05 18:24:47 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:31:41 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 class ScavTrap : public ClapTrap
 {
     public:
-        void guardGate();
-        std::string getName();
-        void print();
+        void guardGate() const;
+        std::string getName() const;
+        void print() const;
         void attack(const std::string& target); 
 
         ScavTrap(const std::string &name);

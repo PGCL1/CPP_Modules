@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:35:10 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/07 15:44:36 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:35:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 	std::cout << GREEN << "FragTrap " << this->name << " is born and well" << RESET << std::endl; 
 }
 
-void FragTrap::highFivesGuys(void)
+void FragTrap::highFivesGuys(void) const
 {
     std::cout << "Who who WHO WANTS A HIGHFIVE??" << std::endl;
 }
@@ -44,7 +44,7 @@ void FragTrap::attack(const std::string& target)
     
 }
 
-void FragTrap::print()
+void FragTrap::print() const
 {
     std::cout << "\nFragTrap " << this->name << " has the following attributes:\n"
         << "- hitPoints = " << this->hitPoints << "\n"
@@ -52,7 +52,7 @@ void FragTrap::print()
         << "- attackDamage = " << this-> attackDamage << "\n" << std::endl;
 }
 
-std::string FragTrap::getName()
+std::string FragTrap::getName() const
 {
     return (this->name);
 }

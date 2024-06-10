@@ -32,12 +32,12 @@ endif
 
 #Program
 # **************************************************************************** #
-NAME			= fragTrap 
+NAME			= diamondtrap 
 
 #Execution
 # **************************************************************************** #
 CC				= c++
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
 #SRC Details
 # **************************************************************************** #
@@ -53,7 +53,7 @@ OBJS            = $(SRCS:%.cpp=objs/%.o)
 # **************************************************************************** #
 $(NAME): objs $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo $(MAGENTA) "\n~~~~~~~~~ Frag Trap compiled! ~~~~~~~~\n" $(RESET)
+	@echo $(MAGENTA) "\n~~~~~~~~~ Diamond Trap compiled! ~~~~~~~~\n" $(RESET)
 
 #Makefile Commands
 # **************************************************************************** #

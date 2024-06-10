@@ -6,14 +6,21 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 12:18:49 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:21:12 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
+
+ScavTrap::ScavTrap() : ClapTrap()
+{
+    std::cout << "ScavTrap default constructor" << std::endl;
+}
+
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {
+    this->name = name;
     this->hitPoints = 100;
     this->energyPoints = 50;
     this->attackDamage = 20;
@@ -36,7 +43,7 @@ void ScavTrap::attack(const std::string& target)
 	if (this->energyPoints && this->hitPoints)
 	{
 		this->energyPoints -= 1;
-		std::cout << "ScavTrap " << this->name << " attacks with fear of retaliation" 
+		std::cout << "ScavTrap " << this->name << " attacks with fear of retaliation " 
             << target << ", causing " << this->getAttackDamage() 
             << " points of damage" <<  std::endl;
 	}

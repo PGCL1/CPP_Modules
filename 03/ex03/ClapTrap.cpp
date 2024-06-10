@@ -1,8 +1,14 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() 
+{
+    std::cout << "ClapTrap default constuctor" << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string& _name)
 {
-	this->name = _name;
+    std::cout << "can i call you?" << std::endl;
+	this->name = _name; 
 	this->hitPoints = 10; 
 	this->energyPoints = 10;
 	this->attackDamage = 0;

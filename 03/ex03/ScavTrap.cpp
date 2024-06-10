@@ -6,13 +6,13 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/07 16:34:25 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:38:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string &name) : AClapTrap(name)
 {
     this->hitPoints = 100;
     this->energyPoints = 50;
@@ -56,7 +56,7 @@ std::string ScavTrap::getName() const
     return (this->name);
 }
 
-ScavTrap::ScavTrap(const ScavTrap& _f) : ClapTrap(_f)
+ScavTrap::ScavTrap(const ScavTrap& _f) : AClapTrap(_f)
 {
 	std::cout << "ScavTrap copying attributes" << std::endl;
 	this->name = _f.name;

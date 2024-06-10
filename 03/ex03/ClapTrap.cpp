@@ -1,32 +1,32 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(const std::string& _name)
+AClapTrap::AClapTrap(const std::string& _name)
 {
 	this->name = _name;
 	this->hitPoints = 10; 
 	this->energyPoints = 10;
 	this->attackDamage = 0;
-	std::cout << GREEN <<"ClapTrap " << this->name << " has been initialized" 
+	std::cout << GREEN <<"AClapTrap " << this->name << " has been initialized" 
 		RESET << std::endl;
 }
 
-unsigned int ClapTrap::getAttackDamage() const
+unsigned int AClapTrap::getAttackDamage() const
 {
     return this->attackDamage;
 }
 
-void ClapTrap::attack() {}
+void AClapTrap::attack(const std::string& target) {}
 
-void ClapTrap::takeDamage(unsigned int amount)
+void AClapTrap::takeDamage(unsigned int amount)
 {
 	this->attackDamage += amount;
     this->hitPoints -= amount;
 	this->energyPoints -= 1;
-	std::cout << "ClapTrap " << this->name << " took " << this->getAttackDamage()
+	std::cout << "AClapTrap " << this->name << " took " << this->getAttackDamage()
         << " points of damage, its life points are now at " << this->hitPoints<< std::endl;
 }
 
-void ClapTrap::beRepaired(unsigned int amount)
+void AClapTrap::beRepaired(unsigned int amount)
 {
     if (this->hitPoints <= 0)
     {
@@ -38,21 +38,21 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		this->energyPoints -= 1;
 		this->hitPoints += amount;
-		std::cout << "ClapTrap " << this->name  << " healed " << amount
+		std::cout << "AClapTrap " << this->name  << " healed " << amount
             << " points itself, its life is now at " << this->hitPoints << std::endl;
 	}
 }
 
-ClapTrap::ClapTrap(const ClapTrap& _f)
+AClapTrap::AClapTrap(const AClapTrap& _f)
 {
-	std::cout << "ClapTrap copying attributes" << std::endl;
+	std::cout << "AClapTrap copying attributes" << std::endl;
 	this->name = _f.name;
 	this->hitPoints = _f.hitPoints; 
 	this->energyPoints = _f.energyPoints;
 	this->attackDamage = _f.attackDamage;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap& copy)
+AClapTrap &AClapTrap::operator=(AClapTrap& copy)
 {
 	if (this != &copy) 
     {
@@ -64,7 +64,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap& copy)
     return (*this);
 }
 
-ClapTrap::~ClapTrap() 
+AClapTrap::~AClapTrap() 
 {
-	std::cout << RED << "ClapTrap " << this->name << " has been DESTRUCTED" << RESET << std::endl;
+	std::cout << RED << "AClapTrap " << this->name << " has been DESTRUCTED" << RESET << std::endl;
 }

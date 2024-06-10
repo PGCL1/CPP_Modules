@@ -5,23 +5,23 @@
 #include <iostream>
 #include <string>
 
-class ClapTrap {
+class AClapTrap {
 	protected:
 		std::string name;
 		unsigned int hitPoints;
 		unsigned int energyPoints;
 		unsigned int attackDamage;
 	public:
-		virtual void attack() = 0;
+		virtual void attack(const std::string& target) = 0;
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
         unsigned int getAttackDamage() const;
 
-		ClapTrap();
-		ClapTrap(const std::string& _name);
-		ClapTrap(const ClapTrap& _f);
-		ClapTrap& operator=(ClapTrap& copy);
-		~ClapTrap();
+		AClapTrap();
+		AClapTrap(const std::string& _name);
+		AClapTrap(const AClapTrap& _f);
+		AClapTrap& operator=(AClapTrap& copy);
+		~AClapTrap();
 };
 
 #endif

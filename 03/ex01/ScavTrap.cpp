@@ -6,13 +6,16 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 15:38:08 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:40:46 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() {}
+ScavTrap::ScavTrap() : ClapTrap() 
+{
+	std::cout << GREEN << "ScavTrap " << this->name << " is alive" << RESET << std::endl; 
+}
 
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 {

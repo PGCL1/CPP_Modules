@@ -1,5 +1,11 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	std::cout << GREEN <<"ClapTrap " << this->name << " has been initialized" 
+		RESET << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string& _name)
 {
 	this->name = _name;

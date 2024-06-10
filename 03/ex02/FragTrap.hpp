@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:32:43 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/07 16:35:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:43:03 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class FragTrap : public ClapTrap
         void print() const;
         void attack(const std::string& target); 
 
+        FragTrap();
         FragTrap(const std::string &name);
         FragTrap(const FragTrap& copy);
         FragTrap& operator=(FragTrap& copy);

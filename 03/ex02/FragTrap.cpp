@@ -6,11 +6,16 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:35:10 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/07 16:35:25 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:43:34 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap() : ClapTrap()
+{
+	std::cout << GREEN << "FragTrap " << this->name << " is born and well" << RESET << std::endl; 
+}
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {

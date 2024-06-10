@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:32:43 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 15:12:58 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:52:46 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class FragTrap : virtual public ClapTrap
     public:
         void highFivesGuys(void) const;
         virtual std::string getName() const;
-        void print() const;
         void attack(const std::string& target); 
 
         FragTrap();

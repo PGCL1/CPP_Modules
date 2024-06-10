@@ -2,12 +2,11 @@
 
 ClapTrap::ClapTrap() 
 {
-    std::cout << "ClapTrap default constuctor" << std::endl;
+    std::cout << GREEN << "ClapTrap default constuctor" <<  RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& _name)
 {
-    std::cout << "can i call you?" << std::endl;
 	this->name = _name; 
 	this->hitPoints = 10; 
 	this->energyPoints = 10;

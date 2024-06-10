@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 15:21:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:58:06 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
     this->hitPoints = 100;
     this->energyPoints = 50;
     this->attackDamage = 20;
-	std::cout << GREEN << "ScavTrap " << this->name << " is alive" << RESET << std::endl; 
+	std::cout << GREEN << "ScavTrap is alive" << RESET << std::endl; 
 }
 
 void ScavTrap::guardGate() const
@@ -48,14 +48,6 @@ void ScavTrap::attack(const std::string& target)
             << " points of damage" <<  std::endl;
 	}
     
-}
-
-void ScavTrap::print() const
-{
-    std::cout << "\nScavTrap " << this->name << " has the following attributes:\n"
-        << "- hitPoints = " << this->hitPoints << "\n"
-        << "- energyPoints = " << this->energyPoints << "\n"
-        << "- attackDamage = " << this-> attackDamage << "\n" << std::endl;
 }
 
 std::string ScavTrap::getName() const

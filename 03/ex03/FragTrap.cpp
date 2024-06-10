@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:35:10 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 15:21:29 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:58:17 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
     this->hitPoints = 100;
     this->energyPoints = 100;
     this->attackDamage = 30;
-	std::cout << GREEN << "FragTrap " << this->name << " is born and well" << RESET << std::endl; 
+	std::cout << GREEN << "FragTrap is born and well" << RESET << std::endl; 
 }
 
 void FragTrap::highFivesGuys(void) const
@@ -48,14 +48,6 @@ void FragTrap::attack(const std::string& target)
     std::cout << "FragTrap " << this->name << " attacks " << target
         << ", causing " << this->getAttackDamage() << " points of damage" <<  std::endl;
     
-}
-
-void FragTrap::print() const
-{
-    std::cout << "\nFragTrap " << this->name << " has the following attributes:\n"
-        << "- hitPoints = " << this->hitPoints << "\n"
-        << "- energyPoints = " << this->energyPoints << "\n"
-        << "- attackDamage = " << this-> attackDamage << "\n" << std::endl;
 }
 
 std::string FragTrap::getName() const

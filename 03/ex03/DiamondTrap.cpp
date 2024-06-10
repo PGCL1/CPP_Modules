@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:48:51 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 15:44:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:57:10 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 {
-    std::cout << "DiamondTrap default constructor" << std::endl; 
+    std::cout << GREEN << "DiamondTrap default constructor" << RESET << std::endl; 
 }
 
 DiamondTrap::DiamondTrap(const std::string name) :  ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name")
@@ -23,6 +23,7 @@ DiamondTrap::DiamondTrap(const std::string name) :  ScavTrap(name + "_clap_name"
     this->hitPoints = FragTrap::hitPoints;
     this->energyPoints = ScavTrap::energyPoints;
     this->attackDamage = FragTrap::attackDamage;
+    std::cout << GREEN << "DiamondTrap has taken flight and is ready to shine" << RESET << std::endl; 
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& _copy) : ScavTrap(_copy), FragTrap(_copy)
@@ -47,8 +48,8 @@ void DiamondTrap::attack(const std::string& target)
 
 void DiamondTrap::whoAmI() const
 {
-    std::cout << "DiamondTrap's name = " << DiamondTrap::name << "\n"
-        << "ClapTrap's name =" << ClapTrap::name << std::endl;
+    std::cout << "DiamondTrap's name = " << DiamondTrap::name << " | "
+        << "ClapTrap's name = " << ClapTrap::name << std::endl;
 }
 
 DiamondTrap::~DiamondTrap()

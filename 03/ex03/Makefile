@@ -44,7 +44,8 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
 SRCS			= main.cpp \
 			  ClapTrap.cpp \
 			  ScavTrap.cpp \
-			  FragTrap.cpp
+			  FragTrap.cpp \
+			  DiamondTrap.cpp
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

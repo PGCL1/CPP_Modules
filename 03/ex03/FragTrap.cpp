@@ -6,13 +6,13 @@
 /*   By: glacroix <glacroix>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:35:10 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 11:41:32 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:19:06 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(const std::string &name) : AClapTrap(name)
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 {
     this->hitPoints = 100;
     this->energyPoints = 100;
@@ -57,7 +57,7 @@ std::string FragTrap::getName() const
     return (this->name);
 }
 
-FragTrap::FragTrap(const FragTrap& _f) : AClapTrap(_f)
+FragTrap::FragTrap(const FragTrap& _f) : ClapTrap(_f)
 {
 	std::cout << "FragTrap copying attributes" << std::endl;
 	this->name = _f.name;

@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:32:43 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 11:38:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:19:18 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : virtual public AClapTrap
+class FragTrap : virtual public ClapTrap
 {
     public:
         void highFivesGuys(void) const;

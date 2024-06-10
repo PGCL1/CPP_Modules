@@ -6,7 +6,7 @@
 /*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:45:45 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/10 11:39:05 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:19:37 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
     public:
         virtual std::string getName() const;
         void whoAmI() const;
+        void attack(const std::string& target);
 
         DiamondTrap(const std::string name);
         DiamondTrap(const DiamondTrap& copy);

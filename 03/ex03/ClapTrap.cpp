@@ -1,32 +1,45 @@
 #include "ClapTrap.hpp"
 
-AClapTrap::AClapTrap(const std::string& _name)
+ClapTrap::ClapTrap(const std::string& _name)
 {
 	this->name = _name;
 	this->hitPoints = 10; 
 	this->energyPoints = 10;
 	this->attackDamage = 0;
-	std::cout << GREEN <<"AClapTrap " << this->name << " has been initialized" 
+	std::cout << GREEN <<"ClapTrap " << this->name << " has been initialized" 
 		RESET << std::endl;
 }
 
-unsigned int AClapTrap::getAttackDamage() const
+unsigned int ClapTrap::getAttackDamage() const
 {
     return this->attackDamage;
 }
 
-void AClapTrap::attack(const std::string& target) {}
+void ClapTrap::attack(const std::string& target)
+{
+    if (this->hitPoints <= 0)
+    {
+        std::cout << "Claptrap " << this->name << " is dead, it cannot attack" << this->name << std::endl;
+        return;
+    }
+	if (this->energyPoints && this->hitPoints)
+	{
+		this->energyPoints -= 1;
+		std::cout << "ClapTrap " << this->name << " attacks " << target 
+            << ", causing " << this->getAttackDamage() << " points of damage" <<  std::endl;
+	}
+}
 
-void AClapTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	this->attackDamage += amount;
     this->hitPoints -= amount;
 	this->energyPoints -= 1;
-	std::cout << "AClapTrap " << this->name << " took " << this->getAttackDamage()
+	std::cout << "ClapTrap " << this->name << " took " << this->getAttackDamage()
         << " points of damage, its life points are now at " << this->hitPoints<< std::endl;
 }
 
-void AClapTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->hitPoints <= 0)
     {
@@ -38,21 +51,21 @@ void AClapTrap::beRepaired(unsigned int amount)
 	{
 		this->energyPoints -= 1;
 		this->hitPoints += amount;
-		std::cout << "AClapTrap " << this->name  << " healed " << amount
+		std::cout << "ClapTrap " << this->name  << " healed " << amount
             << " points itself, its life is now at " << this->hitPoints << std::endl;
 	}
 }
 
-AClapTrap::AClapTrap(const AClapTrap& _f)
+ClapTrap::ClapTrap(const ClapTrap& _f)
 {
-	std::cout << "AClapTrap copying attributes" << std::endl;
+	std::cout << "ClapTrap copying attributes" << std::endl;
 	this->name = _f.name;
 	this->hitPoints = _f.hitPoints; 
 	this->energyPoints = _f.energyPoints;
 	this->attackDamage = _f.attackDamage;
 }
 
-AClapTrap &AClapTrap::operator=(AClapTrap& copy)
+ClapTrap &ClapTrap::operator=(ClapTrap& copy)
 {
 	if (this != &copy) 
     {
@@ -64,7 +77,7 @@ AClapTrap &AClapTrap::operator=(AClapTrap& copy)
     return (*this);
 }
 
-AClapTrap::~AClapTrap() 
+ClapTrap::~ClapTrap() 
 {
-	std::cout << RED << "AClapTrap " << this->name << " has been DESTRUCTED" << RESET << std::endl;
+	std::cout << RED << "ClapTrap " << this->name << " has been DESTRUCTED" << RESET << std::endl;
 }

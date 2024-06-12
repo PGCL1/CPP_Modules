@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:17:23 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:35:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:14:37 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void Cat::makeSound() const
     std::cout << "MIAW MIAW MIAW MIAW" << std::endl;
 }
 
-Cat::Cat() 
+Cat::Cat() : Animal() 
 {
     this->type = "Cat";
     std::cout << GREEN << "Cat's Default Constructor" << RESET << std::endl;
 }
 
-Cat::Cat(const Cat& copy)
+Cat::Cat(const Cat& copy) : Animal(copy)
 {
     this->type = copy.type;
     std::cout << "Cat's Copy Constructor" << type << std::endl;
@@ -43,7 +43,7 @@ Cat& Cat::operator=(const Cat& copy)
     return (*this);
 }
 
-Cat::~Cat()
+Cat::~Cat() 
 {
     std::cout << RED << "Cat's Destructor called" << RESET << std::endl;
 }

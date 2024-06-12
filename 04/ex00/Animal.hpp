@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:55:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:30:51 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:39:12 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Animal {
         Animal();
         Animal(const Animal& copy);
         Animal& operator=(const Animal& copy);
-        ~Animal();
+        virtual ~Animal();
 };
 
 #endif

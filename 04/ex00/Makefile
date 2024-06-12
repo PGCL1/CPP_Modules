@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glacroix <glacroix@student.42madrid.com    +#+  +:+       +#+         #
+#    By: glacroix <PGCL>                            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/05/03 18:57:20 by glacroix         ###   ########.fr        #
+#    Updated: 2024/06/12 12:39:42 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,15 @@ NAME			= polymorphism
 #Execution
 # **************************************************************************** #
 CC				= c++
-CFLAGS			= -Wall -Wextra -Werror -std=c++98 #-g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
 			  Animal.cpp \
-			  Dog.cpp
+			  Dog.cpp \
+			  Cat.cpp
+
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 
 #SRC & BONUS SRC Executions

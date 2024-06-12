@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:56:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:34:10 by glacroix         ###   ########.fr       */
+/*   Created: 2024/06/12 12:27:41 by glacroix          #+#    #+#             */
+/*   Updated: 2024/06/12 12:33:53 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Colors.hpp"
+#include "Dog.hpp"
 #include <iostream>
 
-std::string Animal::getType() const
+std::string Dog::getType() const
 {
     return (this->type);
 }
 
-void Animal::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << "This animal makes an animal sound" << std::endl;
+    std::cout << "WAF WAF WAF WAF" << std::endl;
 }
 
-Animal::Animal() 
+Dog::Dog() 
 {
-    this->type = "Animal";
-    std::cout << GREEN << "Animal's Default Constructor" << RESET << std::endl;
+    this->type = "Dog";
+    std::cout << GREEN << "Dog's Default Constructor" << RESET << std::endl;
 }
 
-Animal::Animal(const Animal& copy)
+Dog::Dog(const Dog& copy)
 {
     this->type = copy.type;
-    std::cout << "Animal's Copy Constructor" << type << std::endl;
+    std::cout << "Dog's Copy Constructor" << type << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& copy)
+Dog& Dog::operator=(const Dog& copy)
 {
     if (this != &copy)
         this->type = copy.type;
     return (*this);
 }
 
-Animal::~Animal()
+Dog::~Dog()
 {
-    std::cout << RED << "Animal's Destructor called" << RESET << std::endl;
+    std::cout << RED << "Dog's Destructor called" << RESET << std::endl;
 }

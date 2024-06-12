@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:37:48 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/11 18:19:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/12 12:25:13 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 class Cat : public Animal
 {
     public:
-       virtual void makeSound();
+       virtual void makeSound() const;
+       virtual std::string getType() const;
 
         Cat();
         Cat(const Cat& copy);

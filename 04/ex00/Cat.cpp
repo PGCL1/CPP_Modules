@@ -1,49 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:56:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:34:10 by glacroix         ###   ########.fr       */
+/*   Created: 2024/06/12 12:17:23 by glacroix          #+#    #+#             */
+/*   Updated: 2024/06/12 12:35:04 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Colors.hpp"
+#include "Cat.hpp"
 #include <iostream>
 
-std::string Animal::getType() const
+std::string Cat::getType() const
 {
     return (this->type);
 }
 
-void Animal::makeSound() const
+void Cat::makeSound() const
 {
-    std::cout << "This animal makes an animal sound" << std::endl;
+    std::cout << "MIAW MIAW MIAW MIAW" << std::endl;
 }
 
-Animal::Animal() 
+Cat::Cat() 
 {
-    this->type = "Animal";
-    std::cout << GREEN << "Animal's Default Constructor" << RESET << std::endl;
+    this->type = "Cat";
+    std::cout << GREEN << "Cat's Default Constructor" << RESET << std::endl;
 }
 
-Animal::Animal(const Animal& copy)
+Cat::Cat(const Cat& copy)
 {
     this->type = copy.type;
-    std::cout << "Animal's Copy Constructor" << type << std::endl;
+    std::cout << "Cat's Copy Constructor" << type << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& copy)
+Cat& Cat::operator=(const Cat& copy)
 {
     if (this != &copy)
         this->type = copy.type;
     return (*this);
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-    std::cout << RED << "Animal's Destructor called" << RESET << std::endl;
+    std::cout << RED << "Cat's Destructor called" << RESET << std::endl;
 }

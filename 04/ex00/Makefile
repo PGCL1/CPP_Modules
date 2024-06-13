@@ -6,7 +6,7 @@
 #    By: glacroix <PGCL>                            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/06/12 12:39:42 by glacroix         ###   ########.fr        #
+#    Updated: 2024/06/13 12:20:51 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,9 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 SRCS			= main.cpp \
 			  Animal.cpp \
 			  Dog.cpp \
-			  Cat.cpp
+			  Cat.cpp \
+			  WrongAnimal.cpp \
+			  WrongCat.cpp \
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:55:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 12:23:40 by glacroix         ###   ########.fr       */
+/*   Created: 2024/06/13 11:56:44 by glacroix          #+#    #+#             */
+/*   Updated: 2024/06/13 12:17:36 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONG_ANIMAL_HPP
+#define WRONG_ANIMAL_HPP
 
 #include <string>
 
-class Animal {
+class WrongAnimal {
     protected:
         std::string type;
 
     public:
-       virtual void makeSound() const;
-       virtual  std::string getType() const;
+       void makeSound() const;
+       std::string getType() const;
 
-        Animal();
-        Animal(const Animal& copy);
-        Animal& operator=(const Animal& copy);
-        virtual ~Animal();
+        WrongAnimal();
+        WrongAnimal(const WrongAnimal& copy);
+        WrongAnimal& operator=(const WrongAnimal& copy);
+        ~WrongAnimal();
 };
+
 
 #endif

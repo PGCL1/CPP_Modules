@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 11:48:55 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 11:55:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 15:41:31 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,24 @@ Brain::Brain()
 
 Brain::Brain(const Brain& copy)
 {
-    this-> = copy.type;
-    std::cout << "Brain's Copy Constructor" << type << std::endl;
+    for (int i = 0; i < 100; i++)
+    {
+        const char *temp = copy.ideas[i].c_str();
+        this->ideas[i].copy((char *)temp, copy.ideas[i].size());
+    }
+    std::cout << "Brain's Copy Constructor" << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& copy)
 {
     if (this != &copy)
-        this->type = copy.type;
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            const char *temp = copy.ideas[i].c_str();
+            this->ideas[i].copy((char *)temp, copy.ideas[i].size());
+        }
+    } 
     return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:37:48 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:25:13 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:25:15 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
+    private:
+        Brain* catBrain;
     public:
        virtual void makeSound() const;
        virtual std::string getType() const;

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:55:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 17:39:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:24:41 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <string>
 
-class Animal {
+class Animal 
+{
     protected:
         std::string type;
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:30:51 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 12:27:18 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:24:49 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
+    private:
+        Brain* dogBrain;
     public:
-        virtual void makeSound() const;
+        virtual void        makeSound() const;
         virtual std::string getType() const;
         
         Dog();

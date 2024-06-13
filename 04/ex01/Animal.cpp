@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:56:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/12 17:40:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:45:42 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Animal::Animal()
 Animal::Animal(const Animal& copy)
 {
     this->type = copy.type;
-    std::cout << "Animal's Copy Constructor" << type << std::endl;
+    std::cout << "Animal's Copy Constructor" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal& copy)

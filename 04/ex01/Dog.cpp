@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:27:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:25:08 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:35:27 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ Dog::Dog(const Dog& copy) : Animal(copy)
 {
     this->dogBrain = new Brain;
     *this->dogBrain = *(copy.dogBrain);
+    std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
+    std::cout << "Address dogBrain: " << dogBrain << std::endl;
+    std::cout << "Address copyBrain: " << copy.dogBrain << std::endl;
     this->type = copy.type;
-    std::cout << "Dog's Copy Constructor" << type << std::endl;
+    std::cout << "Dog's Copy Constructor\n" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& copy)
@@ -45,6 +48,9 @@ Dog& Dog::operator=(const Dog& copy)
     {
         this->dogBrain = new Brain; 
         *this->dogBrain = *(copy.dogBrain);
+        std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
+        std::cout << "Address dogBrain: " << dogBrain << std::endl;
+        std::cout << "Address copyBrain: " << copy.dogBrain << std::endl;
         this->type = copy.type;
     }
     return (*this);

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:15:34 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:26:53 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:30:23 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,12 @@ int main()
         delete zoo[i];
         std::cout << std::endl; 
     }
+    
+    Dog dogTest;
+    Dog copyDog(dogTest);
+
+    Cat catTest;
+    Cat copyCat(catTest);
+
     return 0;
 }

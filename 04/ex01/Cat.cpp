@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:17:23 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:25:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:34:51 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ Cat::Cat(const Cat& copy) : Animal(copy)
 {
     this->catBrain = new Brain;
     *this->catBrain = *(copy.catBrain);
+    std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
+    std::cout << "Address catBrain: " << catBrain << std::endl;
+    std::cout << "Address copyBrain: " << copy.catBrain << std::endl;
     this->type = copy.type;
-    std::cout << "Cat's Copy Constructor" << std::endl;
+    std::cout << "Cat's Copy Constructor\n" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat& copy)
@@ -45,6 +48,9 @@ Cat& Cat::operator=(const Cat& copy)
     {
         this->catBrain = new Brain;
         *this->catBrain = *(copy.catBrain);
+        std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
+        std::cout << "Address catBrain: " << catBrain << std::endl;
+        std::cout << "Address copyBrain: " << copy.catBrain << std::endl;
         this->type = copy.type;
     }
     return (*this);

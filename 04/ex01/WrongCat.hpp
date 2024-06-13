@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 17:47:23 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 11:48:35 by glacroix         ###   ########.fr       */
+/*   Created: 2024/06/13 11:55:36 by glacroix          #+#    #+#             */
+/*   Updated: 2024/06/13 11:58:52 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef WRONG_CAT_HPP
+#define WRONG_CAT_HPP
 
-#include <string>
+#include "WrongAnimal.hpp"
 
-class Brain 
+class WrongCat : public WrongAnimal
 {
-    protected:
-        std::string ideas[100];
     public:
-        Brain();
-        Brain(const Brain& copy);
-        Brain& operator=(const Brain& copy);
-        ~Brain();
+       void makeSound() const;
+       std::string getType() const;
+
+        WrongCat();
+        WrongCat(const WrongCat& copy);
+        WrongCat& operator=(const WrongCat& copy);
+        ~WrongCat();
 };
 
 #endif
+

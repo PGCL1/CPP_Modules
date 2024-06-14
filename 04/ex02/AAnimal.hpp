@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:55:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:40:06 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:33:15 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class AAnimal
         std::string type;
 
     public:
-       virtual void makeSound() const;
+       virtual void makeSound() const = 0;
        virtual  std::string getType() const;
 
         AAnimal();

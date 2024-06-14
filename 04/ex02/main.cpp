@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:15:34 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:41:27 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:36:21 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 int main()
 {
+    //uncomment these lines to test ex02 where AAnimal cannot be instantiated
+    // AAnimal test;
+    // std::cout << test.makeSound() << std::endl;
+    //
+
     AAnimal *zoo[10];
     for (int i = 0; i < 10; i++)
     {

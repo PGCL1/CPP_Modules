@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:56:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:42:09 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:33:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 std::string AAnimal::getType() const
 {
     return (this->type);
-}
-
-void AAnimal::makeSound() const
-{
-    std::cout << "This animal makes an animal sound" << std::endl;
 }
 
 AAnimal::AAnimal() 

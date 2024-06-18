@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:31:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/17 17:19:28 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:19:21 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
+#include <exception>
 
-class Bureaucrat 
+class Bureaucrat  
 {
     private:
         const std::string name;
@@ -24,15 +25,19 @@ class Bureaucrat
     public:
         std::string getName() const;
         int getGrade() const;
-        void incrementGrade(int &grade);
-        void decrementGrade(int &grade);
-
-        Bureaucrat();
+        void incrementGrade();
+        void decrementGrade();
+        class GradeTooHighException : public std::exception {
+            const char *what(void) const throw();
+        };
+        class GradeTooLowException : public std::exception {
+            const char *what(void) const throw();
+        };
+        Bureaucrat(std::string _name, int _grade);
         //implement overload << function
         Bureaucrat(const Bureaucrat& copy);
         Bureaucrat& operator=(const Bureaucrat& copy);
         ~Bureaucrat();
-            
 };
 
 std::ostream& operator<<(std::ostream &output, const Bureaucrat& _b);

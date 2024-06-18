@@ -6,7 +6,7 @@
 #    By: glacroix <PGCL>                            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/06/17 16:31:33 by glacroix         ###   ########.fr        #
+#    Updated: 2024/06/18 14:38:41 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
+				  Bureaucrat.cpp
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

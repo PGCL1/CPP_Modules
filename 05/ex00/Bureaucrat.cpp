@@ -6,13 +6,15 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/18 16:14:03 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:04:20 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Colors.hpp"
 #include <iostream>
+#include <sstream>
+#include <string>
 
 Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name)
 {
@@ -21,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name)
         throw Bureaucrat::GradeTooHighException();
     else if (this->grade > 150)
         throw Bureaucrat::GradeTooLowException();
-    std::cout << GREEN << "Bureaucrat's Default Constructor" << RESET << std::endl;
+    std::cout << GREEN  << this->name << " Bureaucrat's Default Constructor" << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
@@ -53,7 +55,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << RED << "Bureaucrat's Destructor!" << RESET << std::endl;
+    std::cout << RED << this->getName() << " Bureaucrat's Destructor!" << RESET << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
@@ -68,7 +70,9 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 
 std::ostream& operator <<(std::ostream& output, const Bureaucrat& _b)
 {
-    output << _b.getName() + ", bureaucrat grade " + _b.getGrade(); 
+    std::ostringstream convert;
+    convert << _b.getGrade();
+    output << (_b.getName() + ", bureaucrat grade " + convert.str()); 
     return output;
 }
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/18 15:34:30 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:05:11 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ int main()
 {
     try
     {
-        Bureaucrat t("test", 1);
-        t.decrementGrade();
-        std::cout << t.getGrade() << std::endl;
-        t.incrementGrade();
+        Bureaucrat a("Vio", 10);
+        a.decrementGrade();
+        std::cout << a << std::endl;
+        a.incrementGrade();
+        std::cout << a << std::endl;
+
+        Bureaucrat b("Bad", 1);
+        b.incrementGrade();
+        std::cout << "This won't print" << std::endl;
     }
-    catch(std::exception& e)
+    catch(std::exception& error)
     {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Error: " << error.what() << std::endl;
     }
 }

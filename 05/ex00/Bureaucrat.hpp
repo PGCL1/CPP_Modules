@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:31:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/18 16:19:21 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:03:23 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ class Bureaucrat
             const char *what(void) const throw();
         };
         Bureaucrat(std::string _name, int _grade);
-        //implement overload << function
         Bureaucrat(const Bureaucrat& copy);
         Bureaucrat& operator=(const Bureaucrat& copy);
         ~Bureaucrat();

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 17:00:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:30:33 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <string>
 
 
-Form::Form() : m_name("Beautiful"), m_gradeSign(150), m_gradeExec(150)
+Form::Form() : m_name("this beautiful form"), m_gradeSign(150), m_gradeExec(150)
 {
     m_isSigned = false;
     std::cout << GREEN  << this->m_name << " Form's Default Constructor" << RESET << std::endl;
@@ -66,7 +66,7 @@ std::ostream& operator <<(std::ostream& output, const Form& f)
     convertSign << f.getGradeSign();
     std::ostringstream convertExec;
     convertExec << f.getGradeExec();
-    output << f.getName() + "requires " + convertSign.str() + " to be signed and this grade to be executed " + convertExec.str();
+    output << f.getName() + " requires " + convertSign.str() + " to be signed and this grade to be executed " + convertExec.str();
     return output;
 }
 
@@ -83,6 +83,11 @@ int Form::getGradeSign() const
 int Form::getGradeExec() const
 {
     return (this->m_gradeExec);
+}
+
+bool Form::getSigned() const
+{
+    return (this->m_isSigned);
 }
 
 void Form::beSigned(Bureaucrat& b)

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 16:46:03 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:27:19 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Form {
 
     public:
         std::string getName() const;
-        bool getIsSigned() const;
+        bool getSigned() const;
         int getGradeSign() const;
         int getGradeExec() const;
         void incrementGrade();

@@ -6,11 +6,10 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 16:59:40 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:30:01 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "Colors.hpp"
 #include <iostream>
@@ -89,8 +88,8 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::signForm(Form& form) const
 {
-   if (form.getIsSigned() == false)
-       std::cout << Bureaucrat::m_name << "couldn't sign " << form.getName() <<
+   if (form.getSigned() == false)
+       std::cout << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
            " because the grade was too low" << std::endl;
    else
        std::cout << this->getName() << " signed " << form.getName() << std::endl;

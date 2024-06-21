@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:31:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 16:58:33 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 17:25:37 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ class Bureaucrat
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form& form) const;
         class GradeTooHighException : public std::exception {
             const char *what(void) const throw();
         };
         class GradeTooLowException : public std::exception {
             const char *what(void) const throw();
         };
+        void signForm(Form& form) const;
 
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& copy);

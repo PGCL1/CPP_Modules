@@ -6,7 +6,7 @@
 #    By: glacroix <PGCL>                            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/12 18:26:45 by glacroix          #+#    #+#              #
-#    Updated: 2024/06/21 18:35:26 by glacroix         ###   ########.fr        #
+#    Updated: 2024/06/21 21:16:46 by glacroix         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,12 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
 #SRC Details
 # **************************************************************************** #
-SRCS			= main.cpp \
-				  Bureaucrat.cpp \
-				  AForm.cpp
+SRCS			= AForm.cpp \
+				Bureaucrat.cpp \
+				main.cpp \
+				PresidentialPardonForm.cpp \
+				RobotomyRequestForm.cpp \
+				ShrubberyCreationForm.cpp \
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

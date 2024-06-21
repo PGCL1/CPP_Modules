@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:39:29 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 20:04:44 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 21:03:23 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 class ShrubberyCreationForm : public AForm
 {
     public:
+        void createFile(std::string &path) const;
+
         ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm& copy);
         ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);

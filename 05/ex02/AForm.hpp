@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 19:09:37 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:10:06 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ class AForm {
         const int           m_gradeExec;
 
     public:
+        void setGradeSign(int grade);
+        void setGradeExec(int grade);
+        void setName(std::string str);
+
         std::string getName() const;
         bool getSigned() const;
         int getGradeSign() const;

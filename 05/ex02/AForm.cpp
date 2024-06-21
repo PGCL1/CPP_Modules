@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 18:35:11 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/21 20:13:28 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,24 @@ std::ostream& operator <<(std::ostream& output, const AForm& f)
     return output;
 }
 
+void AForm::setName(std::string str)
+{
+    std::string& newStr = const_cast <std::string&> (this->m_name);
+    newStr = str;
+}
+
+void AForm::setGradeExec(int grade)
+{
+    int& newGrade = const_cast <int&> (this->m_gradeExec);
+    newGrade = grade;
+}
+
+void AForm::setGradeSign(int grade)
+{
+    int& newGrade = const_cast <int&> (this->m_gradeSign);
+    newGrade = grade;
+}
+
 std::string AForm::getName() const
 {
     return (this->m_name);
@@ -95,7 +113,7 @@ void AForm::beSigned(Bureaucrat& b)
    if (this->m_gradeSign <= this->m_gradeExec)
    {
        this->m_isSigned = true;
-       b.signAForm(*this);
+       b.signForm(*this);
    }
    else
        throw AForm::GradeTooLowException();

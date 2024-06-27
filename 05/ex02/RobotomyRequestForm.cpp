@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:30:24 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:34:06 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:09:06 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << RED << this->getName() << " RobotomyRequestForm's Destructor!" << RESET << std::endl;
 }
 
+void RobotomyRequestForm::action() const
+{
+    std::cout << this->getTarget() << " has been robotomized 50% of the time!" << std::endl;
+}
 
 int RobotomyRequestForm::getRequiredGradeExec() const
 {
@@ -45,10 +49,18 @@ int RobotomyRequestForm::getRequiredGradeSign() const
     return this->m_requiredGradeSign;
 }
 
+std::string RobotomyRequestForm::getTarget() const
+{
+    return this->m_target;
+}
+
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
     if (this->getSigned() == true && this->getGradeExec() < this->getRequiredGradeExec())
+    {
+        this->action();
         executor.executeForm(*this);
+    }
     else if (this->getGradeExec() > this->getRequiredGradeExec())
         throw RobotomyRequestForm::GradeTooLowException();
 }

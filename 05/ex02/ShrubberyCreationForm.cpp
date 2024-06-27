@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:43:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:32:53 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:01:24 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_requiredGradeSign(145), m_requiredGradeExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_target(target), m_requiredGradeSign(145), m_requiredGradeExec(137)
 {
-    std::cout << "GradeSign is = " << this->getGradeSign() << std::endl;
-    std::cout << "GradeExec is = " << this->getGradeExec() << std::endl;
-    this->createFile(target);
     std::cout << GREEN << " ShrubberyCreationForm's Default Constructor" << RESET << std::endl;
 }
 
@@ -48,10 +45,15 @@ int ShrubberyCreationForm::getRequiredGradeSign() const
     return this->m_requiredGradeSign;
 }
 
-void ShrubberyCreationForm::createFile(std::string& target) const
+std::string ShrubberyCreationForm::getTarget() const
+{
+    return this->m_target;
+}
+
+void ShrubberyCreationForm::createFile() const
 {
     std::ofstream file;
-    std::string path = target + "_shrubbery";
+    std::string path = this->getTarget() + "_shrubbery";
     file.open(path.c_str(), std::ofstream::out | std::ofstream::app);
     if (file.is_open())  
     {
@@ -66,8 +68,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
     if (this->getSigned())
     {
-        if (this->getGradeExec() < this->getRequiredGradeExec() && this->getGradeSign() < this->getRequiredGradeSign()) 
+        if (this->getGradeExec() < this->getRequiredGradeExec() && this->getGradeSign() < this->getRequiredGradeSign())
+        {
+            this->createFile();
             executor.executeForm(*this);
+        }
     }
     else
         std::cerr << "The form doesn't meet the requirements to be executed" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:33:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:33:05 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 20:06:18 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,18 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout << RED << this->getName() << " PresidentialPardonForm's Destructor!" << RESET << std::endl;
 }
 
+void PresidentialPardonForm::action() const
+{
+    std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
+
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
     if (this->getSigned() == true && this->getGradeExec() < this->getRequiredGradeExec())
+    {
+        this->action();
         executor.executeForm(*this);
+    }
     else if (this->getGradeExec() > this->getRequiredGradeExec())
         throw PresidentialPardonForm::GradeTooLowException();
 }
@@ -50,4 +58,9 @@ int PresidentialPardonForm::getRequiredGradeExec() const
 int PresidentialPardonForm::getRequiredGradeSign() const
 {
     return this->m_requiredGradeSign;
+}
+
+std::string PresidentialPardonForm::getTarget() const 
+{
+    return this->getTarget();
 }

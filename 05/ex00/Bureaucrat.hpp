@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:31:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/19 14:03:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:04:05 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Bureaucrat  
 {
     private:
-        const std::string name;
-        int grade;
+        const std::string m_name;
+        int m_grade;
 
     public:
         std::string getName() const;
@@ -33,6 +33,7 @@ class Bureaucrat
         class GradeTooLowException : public std::exception {
             const char *what(void) const throw();
         };
+        Bureaucrat();
         Bureaucrat(std::string _name, int _grade);
         Bureaucrat(const Bureaucrat& copy);
         Bureaucrat& operator=(const Bureaucrat& copy);

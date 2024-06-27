@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/19 15:04:20 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:07:30 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,30 @@
 #include <sstream>
 #include <string>
 
-Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name)
+Bureaucrat::Bureaucrat() : m_name("Ich bin ein Bureaucrat")
 {
-    this->grade = _grade;
-    if (this->grade < 1)
+    this->m_grade = 1;
+    std::cout << GREEN  << this->m_name << " Bureaucrat's Default Constructor" << RESET << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name)
+{
+    this->m_grade = grade;
+    if (this->m_grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    else if (this->grade > 150)
+    else if (this->m_grade > 150)
         throw Bureaucrat::GradeTooLowException();
-    std::cout << GREEN  << this->name << " Bureaucrat's Default Constructor" << RESET << std::endl;
+    std::cout << GREEN  << this->m_name << " Bureaucrat's Default Constructor" << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy)
 {
-    std::string &newName = const_cast <std::string&>(this->name);
-    newName = copy.name;
-    this->grade = copy.grade;
-    if (this->grade < 1)
+    std::string &newName = const_cast <std::string&>(this->m_name);
+    newName = copy.m_name;
+    this->m_grade = copy.m_grade;
+    if (this->m_grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    else if (this->grade > 150)
+    else if (this->m_grade > 150)
         throw Bureaucrat::GradeTooLowException();
 }
 
@@ -42,12 +48,12 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 {
     if (this != &copy)
     {
-        std::string &newName = const_cast <std::string&>(this->name);
-        newName = copy.name;
-        this->grade = copy.grade;
-        if (this->grade < 1)
+        std::string &newName = const_cast <std::string&>(this->m_name);
+        newName = copy.m_name;
+        this->m_grade = copy.m_grade;
+        if (this->m_grade < 1)
             throw Bureaucrat::GradeTooHighException();
-        else if (this->grade > 150)
+        else if (this->m_grade > 150)
             throw Bureaucrat::GradeTooLowException();
     }
     return (*this);
@@ -78,24 +84,24 @@ std::ostream& operator <<(std::ostream& output, const Bureaucrat& _b)
 
 std::string Bureaucrat::getName() const
 {
-    return (this->name);
+    return (this->m_name);
 }
 
 int Bureaucrat::getGrade() const
 {
-    return (this->grade);
+    return (this->m_grade);
 }
 
 void Bureaucrat::incrementGrade()
 {
-    this->grade--;
-    if (this->grade < 1)
+    this->m_grade--;
+    if (this->m_grade < 1)
         throw Bureaucrat::GradeTooHighException();
 }
 
 void Bureaucrat::decrementGrade()
 {
-    this->grade++;
-    if (this->grade > 150)
+    this->m_grade++;
+    if (this->m_grade > 150)
         throw Bureaucrat::GradeTooLowException();
 }

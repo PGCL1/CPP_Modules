@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:31:47 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 17:25:37 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:57:31 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Bureaucrat
         };
         void signForm(Form& form) const;
 
+        Bureaucrat();
         Bureaucrat(std::string name, int grade);
         Bureaucrat(const Bureaucrat& copy);
         Bureaucrat& operator=(const Bureaucrat& copy);

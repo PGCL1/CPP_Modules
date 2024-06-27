@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 17:30:01 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:00:56 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+Bureaucrat::Bureaucrat() : m_name("Ich bin ein bureaucrat!")
+{
+    this->m_grade = 1;
+    std::cout << GREEN  << this->m_name << " Bureaucrat's Default Constructor" << RESET << std::endl;
+}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name)
 {
@@ -108,3 +114,5 @@ void Bureaucrat::decrementGrade()
     if (this->m_grade > 150)
         throw Bureaucrat::GradeTooLowException();
 }
+
+

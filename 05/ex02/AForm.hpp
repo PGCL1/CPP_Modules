@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 20:10:06 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:38:21 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class AForm {
             const char *what(void) const throw();
         };
         void beSigned(Bureaucrat& b);
+        virtual void execute(Bureaucrat const& executor) const = 0;
 
         AForm();
         AForm(const AForm& copy);

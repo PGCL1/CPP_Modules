@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:27:46 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 20:30:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:44:12 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@
 
 class RobotomyRequestForm : public AForm
 {
+    private:
+        const int m_requiredGradeSign;
+        const int m_requiredGradeExec;
+
     public:
+        void execute(Bureaucrat const& executor) const;
+        int getRequiredGradeSign() const;
+        int getRequiredGradeExec() const;
+
         RobotomyRequestForm(std::string target);
         RobotomyRequestForm(const RobotomyRequestForm& copy);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);

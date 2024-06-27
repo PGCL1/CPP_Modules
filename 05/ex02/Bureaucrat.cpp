@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 18:34:07 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:56:44 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
+Bureaucrat::Bureaucrat() : m_name("Thank you Ahmed!")
+{
+    this->m_grade = 1;
+    std::cout << GREEN  << this->m_name << " Bureaucrat's Default Constructor" << RESET << std::endl;
+}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name)
 {
@@ -56,6 +62,14 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 Bureaucrat::~Bureaucrat()
 {
     std::cout << RED << this->getName() << " Bureaucrat's Destructor!" << RESET << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const& form)
+{
+    if (form.getSigned() == true)
+        std::cout << Bureaucrat::getName() << " executed " << form.getName() << std::endl;
+    else
+        std::cout << Bureaucrat::getName() << "couldn't execute the form" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()

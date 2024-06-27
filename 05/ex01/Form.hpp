@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 17:27:19 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:41:51 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ class Form {
         bool getSigned() const;
         int getGradeSign() const;
         int getGradeExec() const;
-        void incrementGrade();
-        void decrementGrade();
         class GradeTooHighException : public std::exception {
             const char *what(void) const throw();
         };
@@ -41,6 +39,7 @@ class Form {
         void beSigned(Bureaucrat& b);
 
         Form();
+        Form(const std::string name, const int gradeSign, const int gradeExec);
         Form(const Form& copy);
         Form& operator=(const Form& copy);
         ~Form();

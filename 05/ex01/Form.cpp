@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 17:30:33 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:41:28 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,23 @@
 #include <sstream>
 #include <string>
 
-
 Form::Form() : m_name("this beautiful form"), m_gradeSign(150), m_gradeExec(150)
 {
     m_isSigned = false;
     std::cout << GREEN  << this->m_name << " Form's Default Constructor" << RESET << std::endl;
 }
 
-Form::Form(const Form& copy) :  m_gradeSign(100), m_gradeExec(100) 
+Form::Form(const std::string name, const int gradeSign, const int gradeExec) : m_name(name), m_gradeSign(gradeSign), m_gradeExec(gradeExec)
 {
-        int& newGradeSign = const_cast <int&> (this->m_gradeSign);
-        int& newGradeExec = const_cast <int&> (this->m_gradeExec);
-        newGradeSign = copy.m_gradeSign;
-        newGradeExec = copy.m_gradeExec;
+    m_isSigned = false;
+    if (m_gradeExec < 1 || m_gradeSign < 1)
+        throw Form::GradeTooHighException();
+    else if (m_gradeExec > 150 || m_gradeExec > 150)
+        throw Form::GradeTooLowException();
+    std::cout << GREEN  << this->m_name << " Form's Default Constructor" << RESET << std::endl;
 }
+
+Form::Form(const Form& copy) :  m_gradeSign(copy.m_gradeSign), m_gradeExec(copy.m_gradeExec) {}
 
 
 Form& Form::operator=(const Form& copy)
@@ -99,20 +102,4 @@ void Form::beSigned(Bureaucrat& b)
    }
    else
        throw Form::GradeTooLowException();
-}
-
-void Form::incrementGrade()
-{
-        int& newGradeSign = const_cast <int&> (this->m_gradeSign);
-        int& newGradeExec = const_cast <int&> (this->m_gradeExec);
-        newGradeSign--;
-        newGradeExec--;
-}
-
-void Form::decrementGrade()
-{
-        int& newGradeSign = const_cast <int&> (this->m_gradeSign);
-        int& newGradeExec = const_cast <int&> (this->m_gradeExec);
-        newGradeSign++;
-        newGradeExec++;
 }

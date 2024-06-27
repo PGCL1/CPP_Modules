@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 17:07:30 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:44:18 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name)
     std::cout << GREEN  << this->m_name << " Bureaucrat's Default Constructor" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& copy)
+Bureaucrat::Bureaucrat(const Bureaucrat& copy) : m_name(copy.m_name)
 {
-    std::string &newName = const_cast <std::string&>(this->m_name);
-    newName = copy.m_name;
     this->m_grade = copy.m_grade;
     if (this->m_grade < 1)
         throw Bureaucrat::GradeTooHighException();

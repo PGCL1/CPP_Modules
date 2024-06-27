@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 16:56:44 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:53:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ Bureaucrat::~Bureaucrat()
     std::cout << RED << this->getName() << " Bureaucrat's Destructor!" << RESET << std::endl;
 }
 
-void Bureaucrat::executeForm(AForm const& form)
+void Bureaucrat::executeForm(AForm const& form) const
 {
     if (form.getSigned() == true)
         std::cout << Bureaucrat::getName() << " executed " << form.getName() << std::endl;
     else
-        std::cout << Bureaucrat::getName() << "couldn't execute the form" << std::endl;
+        std::cerr << Bureaucrat::getName() << "couldn't execute the form" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
@@ -103,7 +103,7 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::signForm(AForm& form) const
 {
    if (form.getSigned() == false)
-       std::cout << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
+       std::cerr << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
            " because the grade was too low" << std::endl;
    else
        std::cout << this->getName() << " signed " << form.getName() << std::endl;

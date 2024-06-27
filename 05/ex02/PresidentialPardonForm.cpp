@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:33:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 16:41:32 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:33:05 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,13 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(), m_
     std::cout << GREEN << " PresidentialPardonForm's Default Constructor" << target << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : m_requiredGradeSign(72), m_requiredGradeExec(45) 
-{
-    this->setGradeSign(copy.getGradeSign());
-    this->setGradeExec(copy.getGradeExec());
-    this->setName(copy.getName());
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), m_requiredGradeSign(72), m_requiredGradeExec(45) {}
 
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
 {
     if (this != &copy)
-    {
-        this->setGradeSign(copy.getGradeSign());
-        this->setGradeExec(copy.getGradeExec());
-        this->setName(copy.getName());
-    }
+        AForm::operator=(copy);
     return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:43:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/25 19:43:21 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:32:53 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(), m_requiredGradeSign(145), m_requiredGradeExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_requiredGradeSign(145), m_requiredGradeExec(137)
 {
     std::cout << "GradeSign is = " << this->getGradeSign() << std::endl;
     std::cout << "GradeExec is = " << this->getGradeExec() << std::endl;
@@ -23,22 +23,13 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(), m_re
     std::cout << GREEN << " ShrubberyCreationForm's Default Constructor" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : m_requiredGradeSign(145), m_requiredGradeExec(137)
-{
-    this->setGradeSign(copy.getGradeSign());
-    this->setGradeExec(copy.getGradeExec());
-    this->setName(copy.getName());
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), m_requiredGradeSign(145), m_requiredGradeExec(137) {}
 
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
 {
     if (this != &copy)
-    {
-        this->setGradeSign(copy.getGradeSign());
-        this->setGradeExec(copy.getGradeExec());
-        this->setName(copy.getName());
-    }
+        AForm::operator=(copy);
     return (*this);
 }
 
@@ -68,10 +59,16 @@ void ShrubberyCreationForm::createFile(std::string& target) const
         file.close();
     }
     else
-        std::cout << RED << "Error opening the file or with the path passed as parameter" << RESET << std::endl;
+        std::cerr << RED << "Error opening the file or with the path passed as parameter" << RESET << std::endl;
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const 
 {
-    if (this->getGradeExec() < 
+    if (this->getSigned())
+    {
+        if (this->getGradeExec() < this->getRequiredGradeExec() && this->getGradeSign() < this->getRequiredGradeSign()) 
+            executor.executeForm(*this);
+    }
+    else
+        std::cerr << "The form doesn't meet the requirements to be executed" << std::endl;
 }

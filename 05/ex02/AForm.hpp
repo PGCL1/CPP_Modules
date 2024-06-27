@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/25 15:38:21 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/27 19:11:23 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ class AForm {
         const int           m_gradeExec;
 
     public:
-        void setGradeSign(int grade);
-        void setGradeExec(int grade);
-        void setName(std::string str);
-
         std::string getName() const;
         bool getSigned() const;
         int getGradeSign() const;
         int getGradeExec() const;
-        void incrementGrade();
-        void decrementGrade();
         class GradeTooHighException : public std::exception {
             const char *what(void) const throw();
         };
@@ -46,6 +40,7 @@ class AForm {
         virtual void execute(Bureaucrat const& executor) const = 0;
 
         AForm();
+        AForm(const std::string name, const int gradeSign, const int gradeExec);
         AForm(const AForm& copy);
         AForm& operator=(const AForm& copy);
         virtual ~AForm();

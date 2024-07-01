@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:43:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 20:01:24 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/28 19:14:08 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_target(target), m_requiredGradeSign(145), m_requiredGradeExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm() : m_target("defaultForm"), m_requiredGradeSign(145), m_requiredGradeExec(137)
 {
     std::cout << GREEN << " ShrubberyCreationForm's Default Constructor" << RESET << std::endl;
+}
+
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_target(target), m_requiredGradeSign(145), m_requiredGradeExec(137)
+{
+    std::cout << GREEN << " ShrubberyCreationForm's Constructor with params" << RESET << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), m_requiredGradeSign(145), m_requiredGradeExec(137) {}
@@ -50,7 +56,7 @@ std::string ShrubberyCreationForm::getTarget() const
     return this->m_target;
 }
 
-void ShrubberyCreationForm::createFile() const
+void ShrubberyCreationForm::action() const
 {
     std::ofstream file;
     std::string path = this->getTarget() + "_shrubbery";
@@ -64,16 +70,18 @@ void ShrubberyCreationForm::createFile() const
         std::cerr << RED << "Error opening the file or with the path passed as parameter" << RESET << std::endl;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const 
+void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-    if (this->getSigned())
+    if (this->getSigned() == true)
     {
-        if (this->getGradeExec() < this->getRequiredGradeExec() && this->getGradeSign() < this->getRequiredGradeSign())
+        if (executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign())
         {
-            this->createFile();
+            this->action();
             executor.executeForm(*this);
         }
+        else if (!(executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign()))
+            throw ShrubberyCreationForm::GradeTooLowException();
     }
     else
-        std::cerr << "The form doesn't meet the requirements to be executed" << std::endl;
+        std::cerr << this->getName() << " grade is too low for " << executor.getName() << " to sign " << std::endl; 
 }

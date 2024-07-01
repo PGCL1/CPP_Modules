@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:33:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 20:06:18 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/06/28 19:09:49 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void PresidentialPardonForm::action() const
 
 void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
-    if (this->getSigned() == true && this->getGradeExec() < this->getRequiredGradeExec())
+    if (this->getSigned() == true)
     {
-        this->action();
-        executor.executeForm(*this);
+        if (executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign())
+        {
+            this->action();
+            executor.executeForm(*this);
+        }
+        else if (!(executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign()))
+            throw PresidentialPardonForm::GradeTooLowException();
     }
-    else if (this->getGradeExec() > this->getRequiredGradeExec())
-        throw PresidentialPardonForm::GradeTooLowException();
+    else
+        std::cerr << this->getName() << " grade is too low for " << executor.getName() << " to sign " << std::endl; 
 }
 
 int PresidentialPardonForm::getRequiredGradeExec() const
@@ -62,5 +67,5 @@ int PresidentialPardonForm::getRequiredGradeSign() const
 
 std::string PresidentialPardonForm::getTarget() const 
 {
-    return this->getTarget();
+    return this->m_target;
 }

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:27:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:35:27 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:12:47 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,11 @@ Dog::Dog() : Animal()
     std::cout << GREEN << "Dog's Default Constructor" << RESET << std::endl;
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
-{
-    this->dogBrain = new Brain;
-    *this->dogBrain = *(copy.dogBrain);
-    std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
-    std::cout << "Address dogBrain: " << dogBrain << std::endl;
-    std::cout << "Address copyBrain: " << copy.dogBrain << std::endl;
-    this->type = copy.type;
-    std::cout << "Dog's Copy Constructor\n" << std::endl;
-}
-
 Dog& Dog::operator=(const Dog& copy)
 {
     if (this != &copy)
     {
+        delete dogBrain;
         this->dogBrain = new Brain; 
         *this->dogBrain = *(copy.dogBrain);
         std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
@@ -54,6 +44,17 @@ Dog& Dog::operator=(const Dog& copy)
         this->type = copy.type;
     }
     return (*this);
+}
+
+Dog::Dog(const Dog& copy) : Animal(copy)
+{
+    this->dogBrain = new Brain; 
+    *this->dogBrain = *(copy.dogBrain);
+    std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;
+    std::cout << "Address dogBrain: " << dogBrain << std::endl;
+    std::cout << "Address copyBrain: " << copy.dogBrain << std::endl;
+    this->type = copy.type;
+    std::cout << "Dog's Copy Constructor\n" << std::endl;
 }
 
 Dog::~Dog()

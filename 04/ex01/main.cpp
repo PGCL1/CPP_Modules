@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:15:34 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:30:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:13:33 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,14 @@ int main()
     Dog dogTest;
     Dog copyDog(dogTest);
 
+    Dog test1;
+    test1 = dogTest;
+
     Cat catTest;
     Cat copyCat(catTest);
+
+    Cat test2;
+    test2 = catTest;
 
     return 0;
 }

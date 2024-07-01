@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/28 18:58:26 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:14:52 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ Bureaucrat::~Bureaucrat()
 
 void Bureaucrat::executeForm(AForm const& form) const
 {
-    if (form.getSigned() == true)
-        std::cout << Bureaucrat::getName() << " executed " << form.getName() << std::endl;
+    if (form.getSigned())
+        form.execute(*this);
     else
-        std::cerr << Bureaucrat::getName() << " couldn't execute the form" << std::endl;
+        std::cerr << Bureaucrat::getName() << " couldn't execute " << form.getName() << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
@@ -102,11 +102,11 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::signForm(AForm& form) const
 {
-    if (form.getSigned() == true)
-        std::cerr << form.getName() << " is already signed, " << this->getName() << " couldn't sign it" << std::endl;
-    else if (form.getSigned() == false)
-        std::cerr << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
-            " because the grade was too low" << std::endl;
+    if (!form.getSigned())
+    {
+        std::cerr <<  this->getName() << " couldn't sign " << form.getName() << " because the office closes at 3PM "<< std::endl;
+        return;
+    }
     else
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
 }

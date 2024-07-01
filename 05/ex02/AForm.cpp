@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:11:32 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:08:44 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,13 @@ bool AForm::getSigned() const
 
 void AForm::beSigned(Bureaucrat& b)
 {
-   if (this->m_gradeSign <= this->m_gradeExec)
-   {
-       this->m_isSigned = true;
-       b.signForm(*this);
-   }
-   else
-       throw AForm::GradeTooLowException();
+    if (this->getSigned())
+    {
+        std::cerr << this->getName() << " is already signed, " << b.getName() << " couldn't sign it" << std::endl;
+        return;
+    }
+    else if (b.getGrade() <= this->m_gradeExec && b.getGrade() <= this->m_gradeSign)
+        this->m_isSigned = true;
+    else
+        throw AForm::GradeTooLowException();
 }

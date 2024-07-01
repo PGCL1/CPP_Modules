@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:17:23 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:41:00 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:15:55 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ Cat& Cat::operator=(const Cat& copy)
 {
     if (this != &copy)
     {
+        delete catBrain;
         this->catBrain = new Brain;
         *this->catBrain = *(copy.catBrain);
         std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;

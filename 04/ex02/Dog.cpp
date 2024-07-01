@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:27:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/13 17:40:34 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:15:37 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ Dog& Dog::operator=(const Dog& copy)
 {
     if (this != &copy)
     {
+        delete dogBrain;
         this->dogBrain = new Brain; 
         *this->dogBrain = *(copy.dogBrain);
         std::cout << "\n---TO SHOW DEEP COPY---"<<std::endl;

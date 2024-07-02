@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:33:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/01 14:48:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:12:24 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Colors.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(), m_requiredGradeSign(72), m_requiredGradeExec(45) 
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target)
 {
     std::cout << GREEN << " PresidentialPardonForm's Default Constructor " << target << RESET << std::endl;
 }
@@ -44,12 +44,12 @@ void PresidentialPardonForm::execute(Bureaucrat const& executor) const
     if (this->getSigned() == true)
     {
         if (executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign())
-        {
             this->action();
-            executor.executeForm(*this);
-        }
-        else if (!(executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign()))
+        else if (!(executor.getGrade() < this->getRequiredGradeExec() || executor.getGrade() < this->getRequiredGradeSign()))
+        {
+            std::cout << executor.getName() << " couldn't execute " << this->getName() << std::endl;
             throw PresidentialPardonForm::GradeTooLowException();
+        }
     }
     else
         std::cerr << this->getName() << " grade is too low for " << executor.getName() << " to sign " << std::endl; 

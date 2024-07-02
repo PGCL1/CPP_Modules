@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:30:24 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/01 18:19:26 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:11:17 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const
             this->action();
             std::cout << executor.getName() << " executed " << this->getName() << std::endl;
         }
-        else if (!(executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign()))
+        else if (!(executor.getGrade() < this->getRequiredGradeExec() || executor.getGrade() < this->getRequiredGradeSign()))
+        {
+            std::cout << executor.getName() << " couldn't execute " << this->getName() << std::endl;
             throw RobotomyRequestForm::GradeTooLowException();
+        }
     }
     else
         std::cerr << this->getName() << "is not signed, so it cannot be executed!" << std::endl;

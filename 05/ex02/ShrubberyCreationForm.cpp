@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:43:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/28 19:14:08 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:06:42 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
             this->action();
             executor.executeForm(*this);
         }
-        else if (!(executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign()))
+        else if (!(executor.getGrade() < this->getRequiredGradeExec() || executor.getGrade() < this->getRequiredGradeSign()))
+        {
+            std::cout << executor.getName() << " couldn't execute " << this->getName() << std::endl;
             throw ShrubberyCreationForm::GradeTooLowException();
+        }
     }
     else
         std::cerr << this->getName() << " grade is too low for " << executor.getName() << " to sign " << std::endl; 

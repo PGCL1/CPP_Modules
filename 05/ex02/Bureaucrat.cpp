@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/01 18:14:52 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:05:02 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void Bureaucrat::executeForm(AForm const& form) const
     if (form.getSigned())
         form.execute(*this);
     else
-        std::cerr << Bureaucrat::getName() << " couldn't execute " << form.getName() << std::endl;
+        std::cerr << form.getName() << " is not signed!" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()

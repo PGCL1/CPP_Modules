@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/01 18:08:44 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:04:01 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include <string>
 
 AForm::AForm() : m_name("this beautiful form"), m_gradeSign(150), m_gradeExec(150)
+{
+    m_isSigned = false;
+    std::cout << GREEN  << this->m_name << " calls AForm's Default Constructor" << RESET << std::endl;
+}
+
+AForm::AForm(std::string name) : m_name(name), m_gradeSign(150), m_gradeExec(150)
 {
     m_isSigned = false;
     std::cout << GREEN  << this->m_name << " calls AForm's Default Constructor" << RESET << std::endl;

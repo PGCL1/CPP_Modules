@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:07:12 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/28 19:11:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:27:50 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class AForm {
         virtual void execute(Bureaucrat const& executor) const = 0;
 
         AForm();
+        AForm(std::string name);
         AForm(const std::string name, const int gradeSign, const int gradeExec);
         AForm(const AForm& copy);
         AForm& operator=(const AForm& copy);

@@ -75,10 +75,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
     if (this->getSigned() == true)
     {
         if (executor.getGrade() < this->getRequiredGradeExec() && executor.getGrade() < this->getRequiredGradeSign())
-        {
             this->action();
-            executor.executeForm(*this);
-        }
         else if (!(executor.getGrade() < this->getRequiredGradeExec() || executor.getGrade() < this->getRequiredGradeSign()))
         {
             std::cout << executor.getName() << " couldn't execute " << this->getName() << std::endl;

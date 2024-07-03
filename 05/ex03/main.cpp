@@ -11,39 +11,19 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "Colors.hpp"
 #include <iostream>
 #include <exception>
+#include "Intern.hpp"
 
 int main()
 {
     try 
     {
-/*        Bureaucrat a("NotoriousB.I.G", 50);
-        RobotomyRequestForm bible("robots");
-        bible.beSigned(a);
-        a.signForm(bible);
-        a.executeForm(bible); // this won't execute
-        std::cout << MAGENTA << "Test Bible passed\n" << RESET << std::endl;
-*/
-        std::cout << MAGENTA << "Example 2: form is not signed" << RESET << std::endl;
-        Bureaucrat b("BigBoss", 134);
-        ShrubberyCreationForm form("best");
-        b.signForm(form);
-        b.executeForm(form);
-        std::cout << std::endl;
-
-
-        std::cout << MAGENTA << "Example 3: everything should work here" << RESET << std::endl;
-        Bureaucrat c("Igor", 1);
-        PresidentialPardonForm hurdle("robots");
-        hurdle.beSigned(c);
-        c.signForm(hurdle);
-        c.executeForm(hurdle); 
-        std::cout << std::endl;
+        Intern someDumbIntern;
+        AForm *rrr;
+        rrr = someDumbIntern.makeForm("robotomy request form", "test");
+        rrr->action();
+        delete rrr;
     } 
     catch (std::exception& err)
     {

@@ -18,7 +18,7 @@
 class Intern {
 
     public:
-        AForm& makeForm(const std::string formType, const std::string target);
+        AForm* makeForm(const std::string formType, const std::string target);
 
         Intern();
         Intern(const Intern& copy);

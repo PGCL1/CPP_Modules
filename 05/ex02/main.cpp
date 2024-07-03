@@ -21,17 +21,18 @@
 int main()
 {
     try 
-    {
-/*        Bureaucrat a("NotoriousB.I.G", 50);
+    {/*
+        Bureaucrat a("NotoriousB.I.G", 50);
         RobotomyRequestForm bible("robots");
         bible.beSigned(a);
         a.signForm(bible);
         a.executeForm(bible); // this won't execute
-        std::cout << MAGENTA << "Test Bible passed\n" << RESET << std::endl;
-*/
+        std::cout << MAGENTA << "Test Bible passed\n" << RESET << std::endl;*/
+
         std::cout << MAGENTA << "Example 2: form is not signed" << RESET << std::endl;
         Bureaucrat b("BigBoss", 134);
         ShrubberyCreationForm form("best");
+        form.beSigned(b);
         b.signForm(form);
         b.executeForm(form);
         std::cout << std::endl;

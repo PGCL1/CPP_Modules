@@ -22,7 +22,10 @@ Intern::Intern()
     std::cout << GREEN  << " Intern's Default Constructor" << RESET << std::endl;
 }
 
-Intern::Intern(const Intern& copy) {}
+Intern::Intern(const Intern& copy) 
+{
+    *this = copy;
+}
 
 
 Intern& Intern::operator=(const Intern& copy)
@@ -37,14 +40,30 @@ Intern::~Intern()
     std::cout << RED << " Intern's Destructor!" << RESET << std::endl;
 }
 
-AForm& Intern::makeForm(const std::string formType, const std::string target)
+AForm* Intern::makeForm(const std::string formType, const std::string target)
 {
-    const AForm types[] = {ShrubberyCreationForm, PresidentialPardonForm, RobotomyRequestForm};
-    AForm *InternForm;
-    for (int i = 0; i < 3; i++)
+    const std::string types[3] = {"shrubbery creation form", "presidential pardon form", "robotomy request form"};
+    AForm *InternForm = NULL;
+    int i = 0;
+    for (; i < 3; i++)
     {
         if (formType == types[i])
-            InternForm = new ShrubberyCreationForm;
+            break;
     }
-    return *InternForm;
+    switch (i)
+    {
+        case 0:
+            InternForm = new ShrubberyCreationForm(target);
+            return (InternForm);
+        case 1:
+            InternForm = new PresidentialPardonForm(target);
+            return (InternForm);
+        case 2:
+            InternForm = new RobotomyRequestForm(target);
+            return (InternForm);
+        default:
+            std::cerr << "The form type param doesn't not exist in the predefined types of forms!" << std::endl;
+            break;
+    }
+    return NULL;
 }

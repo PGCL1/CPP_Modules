@@ -14,7 +14,7 @@
 #include "Colors.hpp"
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(), m_requiredGradeSign(25), m_requiredGradeExec(5) 
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target), m_requiredGradeSign(25), m_requiredGradeExec(5), m_target(target) 
 {
     std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << target << RESET << std::endl;
 }

@@ -6,4 +6,5 @@ In 42, the introductory modules to CPP are separated in two parts, consisting of
 - [x] CPP_02: understand Ad-hoc polymorphism, overloads and orthodox canonical classes in CPP
 - [x] CPP_O3: understand inheritance in CPP
 - [x] CPP_04: understand Subtype polymorphism, abstract classes and interfaces in CPP
-- [ ] CPP_05: understand Try/Catch and Exceptions in CPP
+- [x] CPP_05: understand Try/Catch and Exceptions in CPP
+- [ ] CPP_06: understand the different casts in CPP

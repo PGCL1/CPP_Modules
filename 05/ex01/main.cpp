@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:34:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/21 12:59:11 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:56:56 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@ int main()
 {
     try
     {
-        Bureaucrat a("Vio", 10);
-        a.decrementGrade();
-        std::cout << a << std::endl;
-        a.incrementGrade();
-        std::cout << a << std::endl;
+        Bureaucrat b("Vio", 10);
+        b.decrementGrade();
+        std::cout << b << std::endl;
+        b.incrementGrade();
+        std::cout << b << std::endl;
 
-        Form test;
-        a.signForm(test);
+        Form form;
+        //won't work because the form is not signed
+        b.signForm(form);
+
+        form.beSigned(b);
+        b.signForm(form);
     }
     catch(std::exception& error)
     {

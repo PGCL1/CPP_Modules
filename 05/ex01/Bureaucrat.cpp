@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:38:06 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:39:29 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:51:55 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::signForm(Form& form) const
 {
-   if (form.getSigned() == false)
-       std::cout << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
-           " because the grade was too low" << std::endl;
-   else
+   if (form.getSigned())
        std::cout << this->getName() << " signed " << form.getName() << std::endl;
+   else
+       std::cout << Bureaucrat::m_name << " couldn't sign " << form.getName() <<
+           " because the grade was too low or the form wasn't signed" << std::endl;
 }
 
 void Bureaucrat::incrementGrade()

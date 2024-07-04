@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:12:41 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 19:41:28 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:50:24 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,8 @@ bool Form::getSigned() const
 
 void Form::beSigned(Bureaucrat& b)
 {
-   if (this->m_gradeSign <= this->m_gradeExec)
-   {
+   if (b.getGrade() <= this->m_gradeSign)
        this->m_isSigned = true;
-       b.signForm(*this);
-   }
    else
        throw Form::GradeTooLowException();
 }

@@ -14,12 +14,12 @@
 #include "Colors.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target), m_requiredGradeSign(25), m_requiredGradeExec(5), m_target(target)
 {
     std::cout << GREEN << " PresidentialPardonForm's Default Constructor " << target << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), m_requiredGradeSign(72), m_requiredGradeExec(45) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), m_requiredGradeSign(25), m_requiredGradeExec(5) {}
 
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)

@@ -29,7 +29,7 @@ int main()
         a.executeForm(bible); // this won't execute
         std::cout << MAGENTA << "Test Bible passed\n" << RESET << std::endl;*/
 
-        std::cout << MAGENTA << "Example 2: form is not signed" << RESET << std::endl;
+        std::cout << MAGENTA << "Example 2: form is signed" << RESET << std::endl;
         Bureaucrat b("BigBoss", 134);
         ShrubberyCreationForm form("best");
         form.beSigned(b);

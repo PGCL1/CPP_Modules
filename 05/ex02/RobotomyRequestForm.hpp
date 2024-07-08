@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:27:46 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 20:08:53 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:00:03 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ class RobotomyRequestForm : public AForm
         std::string getTarget() const;
         void action() const;
 
-        RobotomyRequestForm(std::string target);
-        RobotomyRequestForm(const RobotomyRequestForm& copy);
-        RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
+        RobotomyRequestForm(std::string target_example);
+        RobotomyRequestForm(const RobotomyRequestForm& example);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& example);
         ~RobotomyRequestForm();
 
 };

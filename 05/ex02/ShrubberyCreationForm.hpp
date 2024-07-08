@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 19:39:29 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/01 11:42:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:58:20 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ class ShrubberyCreationForm : public AForm
         void action() const;
         
         ShrubberyCreationForm();
-        ShrubberyCreationForm(std::string target);
-        ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);
+        ShrubberyCreationForm(std::string target_example);
+        ShrubberyCreationForm(const ShrubberyCreationForm& example);
+        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& example);
         ~ShrubberyCreationForm();
 
 };

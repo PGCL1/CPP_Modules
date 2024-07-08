@@ -41,13 +41,13 @@ class AForm {
         virtual void execute(Bureaucrat const& executor) const = 0;
 
         AForm();
-        AForm(std::string name);
-        AForm(const std::string name, const int gradeSign, const int gradeExec);
-        AForm(const AForm& copy);
-        AForm& operator=(const AForm& copy);
+        AForm(std::string name_example);
+        AForm(const std::string name_example, const int gradeSign_example, const int gradeExec_example);
+        AForm(const AForm& example);
+        AForm& operator=(const AForm& example);
         virtual ~AForm();
 };
 
-std::ostream& operator <<(std::ostream& output, const AForm& _f);
+std::ostream& operator <<(std::ostream& output, const AForm& f);
 
 #endif

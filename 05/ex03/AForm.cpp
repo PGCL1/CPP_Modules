@@ -17,43 +17,32 @@
 #include <sstream>
 #include <string>
 
-AForm::AForm() : m_name("this beautiful form"), m_gradeSign(150), m_gradeExec(150)
+AForm::AForm() : m_name("this beautiful form"), m_gradeSign(150), m_gradeExec(150), m_isSigned(false)
 {
-    m_isSigned = false;
     std::cout << GREEN  << this->m_name << " calls AForm's Default Constructor" << RESET << std::endl;
 }
 
-AForm::AForm(std::string name) : m_name(name), m_gradeSign(150), m_gradeExec(150)
+AForm::AForm(std::string name_example) : m_name(name_example), m_gradeSign(150), m_gradeExec(150), m_isSigned(false)
 {
-    m_isSigned = false;
     std::cout << GREEN  << this->m_name << " calls AForm's Default Constructor" << RESET << std::endl;
 }
 
 
-AForm::AForm(const std::string name, const int gradeSign, const int gradeExec) : m_name(name), m_gradeSign(gradeSign), m_gradeExec(gradeExec)
+AForm::AForm(const std::string name_example, const int gradeSign_example, const int gradeExec_example) : m_name(name_example), m_gradeSign(gradeSign_example), m_gradeExec(gradeExec_example), m_isSigned(false)
 {
-    m_isSigned = false;
     std::cout << GREEN  << this->m_name << " calls AForm's Default Constructor" << RESET << std::endl;
 }
 
-AForm::AForm(const AForm& copy) :  m_gradeSign(100), m_gradeExec(100) 
+AForm::AForm(const AForm& example) :  m_gradeSign(100), m_gradeExec(100) 
 {
-        int& newGradeSign = const_cast <int&> (this->m_gradeSign);
-        int& newGradeExec = const_cast <int&> (this->m_gradeExec);
-        newGradeSign = copy.m_gradeSign;
-        newGradeExec = copy.m_gradeExec;
+    this->m_isSigned = example.m_isSigned;
 }
 
 
-AForm& AForm::operator=(const AForm& copy)
+AForm& AForm::operator=(const AForm& example)
 {
-    if (this != &copy)
-    {
-        int& newGradeSign = const_cast <int&> (this->m_gradeSign);
-        int& newGradeExec = const_cast <int&> (this->m_gradeExec);
-        newGradeSign = copy.m_gradeSign;
-        newGradeExec = copy.m_gradeExec;
-    }
+    if (this != &example)
+        this->m_isSigned = example.m_isSigned;
     return (*this);
 }
 

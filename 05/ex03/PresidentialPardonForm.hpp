@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 20:31:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/06/27 20:04:23 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:13:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ class PresidentialPardonForm : public AForm
         std::string getTarget() const;
         void action() const;
 
-        PresidentialPardonForm(std::string target);
-        PresidentialPardonForm(const PresidentialPardonForm& copy);
-        PresidentialPardonForm& operator=(const PresidentialPardonForm& copy);
+        PresidentialPardonForm();
+        PresidentialPardonForm(std::string target_example);
+        PresidentialPardonForm(const PresidentialPardonForm& example);
+        PresidentialPardonForm& operator=(const PresidentialPardonForm& example);
         ~PresidentialPardonForm();
 };
 

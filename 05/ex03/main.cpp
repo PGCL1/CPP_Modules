@@ -19,11 +19,29 @@ int main()
 {
     try 
     {
-        Intern someDumbIntern;
-        AForm *rrr;
-        rrr = someDumbIntern.makeForm("robotomy request form", "test");
-        rrr->action();
-        delete rrr;
+        Intern thebestIntern;
+        AForm *form1;
+        form1 = thebestIntern.makeForm("robotomy request form", "GreatForm");
+        form1->action();
+        delete form1;
+        
+        AForm *form2;
+        form2 = thebestIntern.makeForm("shrubbery creation form", "GreaterForm");
+        form2->action();
+        delete form2;
+
+        AForm *form3;
+        form3 = thebestIntern.makeForm("presidential pardon form", "GreatestForm");
+        form3->action();
+        delete form3;
+
+        AForm *form4;
+        form4 = thebestIntern.makeForm("bullshit form", "badbadForm");
+        if (form4)
+        {
+            form4->action();
+            delete form4;
+        }
     } 
     catch (std::exception& err)
     {

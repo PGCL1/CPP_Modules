@@ -21,18 +21,18 @@ ShrubberyCreationForm::ShrubberyCreationForm() : m_target("defaultForm"), m_requ
 }
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : m_target(target), m_requiredGradeSign(145), m_requiredGradeExec(137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target_example) : m_target(target_example), m_requiredGradeSign(145), m_requiredGradeExec(137)
 {
     std::cout << GREEN << " ShrubberyCreationForm's Constructor with params" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), m_requiredGradeSign(145), m_requiredGradeExec(137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& example) : AForm(example), m_requiredGradeSign(145), m_requiredGradeExec(137) {}
 
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& example)
 {
-    if (this != &copy)
-        AForm::operator=(copy);
+    if (this != &example)
+        AForm::operator=(example);
     return (*this);
 }
 
@@ -63,7 +63,18 @@ void ShrubberyCreationForm::action() const
     file.open(path.c_str(), std::ofstream::out | std::ofstream::app);
     if (file.is_open())  
     {
-        file << "\noxoxoo    ooxoo\nooxoxo oo  oxoxooo\noooo xxoxoo ooo ooox\noxo o oxoxo  xoxxoxo\noxo xooxoooo o ooo\nooooo\\  /o/o\n\\  \\/ /\n|   /\n|  |\n| D|\n|  |\n|  |\n______/____\\____\n\n";
+        file << "\noxoxoo    ooxoo"
+            "\nooxoxo oo  oxoxooo"
+            "\noooo xxoxoo ooo ooox"
+            "\noxo o oxoxo  xoxxoxo"
+            "\noxo xooxoooo o ooo"
+            "\nooooo\\  /o/o"
+            "\n\\  \\/ /"
+            "\n|   /"
+            "\n|  |"
+            "\n| D|"
+            "\n|  |"
+            "\n|  |";
         file.close();
     }
     else

@@ -22,18 +22,10 @@ Intern::Intern()
     std::cout << GREEN  << " Intern's Default Constructor" << RESET << std::endl;
 }
 
-Intern::Intern(const Intern& copy) 
-{
-    *this = copy;
-}
+Intern::Intern(const Intern& example) {}
 
 
-Intern& Intern::operator=(const Intern& copy)
-{
-    if (this != &copy)
-        *this = copy;
-    return (*this);
-}
+Intern& Intern::operator=(const Intern& example) {return *this;}
 
 Intern::~Intern()
 {

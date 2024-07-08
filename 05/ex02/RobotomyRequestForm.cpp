@@ -14,18 +14,18 @@
 #include "Colors.hpp"
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target) 
+RobotomyRequestForm::RobotomyRequestForm(std::string target_example) : AForm(), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target_example) 
 {
-    std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << target << RESET << std::endl;
+    std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << target_example << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), m_requiredGradeSign(72), m_requiredGradeExec(45) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& example) : AForm(example), m_requiredGradeSign(72), m_requiredGradeExec(45) {}
 
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy)
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& example)
 {
-    if (this != &copy)
-        AForm::operator=(copy);
+    if (this != &example)
+        AForm::operator=(example);
     return (*this);
 }
 

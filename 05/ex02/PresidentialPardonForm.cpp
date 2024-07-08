@@ -14,18 +14,23 @@
 #include "Colors.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target), m_requiredGradeSign(25), m_requiredGradeExec(5), m_target(target)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Default Target"), m_requiredGradeSign(25), m_requiredGradeExec(5), m_target("Default Target")
 {
-    std::cout << GREEN << " PresidentialPardonForm's Default Constructor " << target << RESET << std::endl;
+    std::cout << GREEN << " PresidentialPardonForm's Default Constructor " << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) : AForm(copy), m_requiredGradeSign(25), m_requiredGradeExec(5) {}
-
-
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& copy)
+PresidentialPardonForm::PresidentialPardonForm(std::string target_example) : AForm(target_example), m_requiredGradeSign(25), m_requiredGradeExec(5), m_target(target_example)
 {
-    if (this != &copy)
-        AForm::operator=(copy);
+    std::cout << GREEN << " PresidentialPardonForm's Default Constructor " << target_example << RESET << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& example) : AForm(example), m_requiredGradeSign(25), m_requiredGradeExec(5) {}
+
+
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& example)
+{
+    if (this != &example)
+        AForm::operator=(example);
     return (*this);
 }
 

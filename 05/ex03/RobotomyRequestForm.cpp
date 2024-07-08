@@ -14,18 +14,23 @@
 #include "Colors.hpp"
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target) 
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Default Robotomy"), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target("Default Robotomy") 
 {
-    std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << target << RESET << std::endl;
+    std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(copy.m_target) {}
-
-
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& copy)
+RobotomyRequestForm::RobotomyRequestForm(std::string target_example) : AForm(target_example), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(target_example) 
 {
-    if (this != &copy)
-        AForm::operator=(copy);
+    std::cout << GREEN << " RobotomyRequestForm's Default Constructor " << target_example << RESET << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& example) : AForm(example), m_requiredGradeSign(72), m_requiredGradeExec(45), m_target(example.m_target) {}
+
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& example)
+{
+    if (this != &example)
+        AForm::operator=(example);
     return (*this);
 }
 

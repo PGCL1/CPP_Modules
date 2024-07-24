@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:54:40 by glacroix          #+#    #+#             */
-/*   Updated: 2024/07/17 15:43:48 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/07/24 09:56:32 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,18 @@ class IScalarConverter {
         static void convert(char* input);
 
 };
+
+int isDecimal(char *str);
+int isInt(char *str);
+
+void convertChar(char *input);
+void convertInt(char *input);
+void convertFloat(char *input);
+void convertDouble(char *input);
+
+void notPrintable();
+void printTypes(int i, char c, double d, float f);
+
+std::string getType(char *input);
 
 #endif

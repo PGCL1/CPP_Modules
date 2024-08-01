@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "Base.hpp"
+#include <exception>
 #include <bsd/stdlib.h>
 
 class A : public Base{};
@@ -52,21 +53,21 @@ void identify(Base& p)
         A& one = dynamic_cast<A &>(p);
         std::cout << "YOU KNOW WHO IT ISSSSSS, it's A's REF: " << &one << std::endl;
     }
-    catch (std::bad_cast &err){}
+    catch (std::exception &err){}
 
     try
     {
         B& two = dynamic_cast<B &>(p);
         std::cout << "YOU KNOW WHO IT ISSSSSS, it's B's REF: " << &two << std::endl;
     }
-    catch (std::bad_cast &err){}
+    catch (std::exception &err){}
     
     try
     {
         C& three = dynamic_cast<C &>(p);
         std::cout << "YOU KNOW WHO IT ISSSSSS, it's C's REF: " << &three << std::endl;
     }
-    catch (std::bad_cast &err){}
+    catch (std::exception &err){}
 }
  
 

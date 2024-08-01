@@ -43,7 +43,6 @@ CFLAGS			+= -fpermissive
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
-				  Data.cpp \
 				  Serializer.cpp
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)

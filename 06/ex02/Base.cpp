@@ -11,9 +11,5 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
-#include <iostream>
 
-Base::~Base()
-{
-    std::cout << "Base Default Destructor" << std::endl;
-}
+Base::~Base() {}

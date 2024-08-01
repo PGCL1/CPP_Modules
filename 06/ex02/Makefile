@@ -39,6 +39,7 @@ NAME			= 4theRealOnes
 CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 CFLAGS			+= -fpermissive
+LDFLAGS			= -lbsd -fsanitize=address
 
 #SRC Details
 # **************************************************************************** #
@@ -50,7 +51,7 @@ OBJS            = $(SRCS:%.cpp=objs/%.o)
 #SRC & BONUS SRC Executions
 # **************************************************************************** #
 $(NAME): objs $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo $(MAGENTA) "\n~~~~~~~~~ 4theRealOnes compiled! ~~~~~~~~\n" $(RESET)
 
 #Makefile Commands
@@ -72,4 +73,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

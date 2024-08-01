@@ -12,23 +12,26 @@
 
 #include <iostream>
 #include "Base.hpp"
-#include <typeinfo>
-#include <assert.h>
-#include <stdlib.h>
+#include <bsd/stdlib.h>
 
 class A : public Base{};
 class B : public Base{};
 class C : public Base{};
 
-Base * generate(void)
+Base* generate(void)
 {
     Base* types[] = {new A, new B, new C};
+    const char types_args[] = {'A', 'B', 'C'};
     int rand = arc4random_uniform(3);
-    std::cout << rand << std::endl;
+    std::cout << "rand = " << rand << " | type = " << types_args[rand] << std::endl;
+    for (int i = 0; i < 3; i += 1)
+    {
+        if (rand != i)
+            delete types[i];
+    }
     return (types[rand]);
 }
-    
-
+ 
 void identify(Base* p)
 {
     A *one = dynamic_cast<A *>(p);
@@ -44,32 +47,40 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-    A &test = dynamic_cast<A &>(p);
-    std::cout << "this is a test: " << &test << std::endl;
-    /*
-    B &two = dynamic_cast<B &>(p);
-    C &three = dynamic_cast<C &>(p);
-    if (test)
-        std::cout << "YEAAAAAAA BOIIIIIIIIIIIIIIIIII, it's A" << std::endl;
-    else if (two)
-        std::cout << "YEAAAAAAA BOIIIIIIIIIIIIIIIIII, it's B" << std::endl;
-    else if (three)
-        std::cout << "YEAAAAAAA BOIIIIIIIIIIIIIIIIII, it's C" << std::endl;
-    */
+    try
+    {
+        A& one = dynamic_cast<A &>(p);
+        std::cout << "YOU KNOW WHO IT ISSSSSS, it's A's REF: " << &one << std::endl;
+    }
+    catch (std::bad_cast &err){}
+
+    try
+    {
+        B& two = dynamic_cast<B &>(p);
+        std::cout << "YOU KNOW WHO IT ISSSSSS, it's B's REF: " << &two << std::endl;
+    }
+    catch (std::bad_cast &err){}
+    
+    try
+    {
+        C& three = dynamic_cast<C &>(p);
+        std::cout << "YOU KNOW WHO IT ISSSSSS, it's C's REF: " << &three << std::endl;
+    }
+    catch (std::bad_cast &err){}
 }
+ 
 
 int main()
 {
-      Base *test = generate();
-      std::cout << (test == 0 ? "Failed: pointer is NULL" : "Sucess: pointer is not null | ") << test << std::endl; 
-      identify(test);
-      std::cout << "test is: " << typeid(test).name() << std::endl;
-      std::cout << "*test is: " << typeid(*test).name() << std::endl;
+    Base *test = generate();
+    identify(test);
+    identify(*test);
+    delete test;
+    std::cout << std::endl;
 
-      test = generate();
-      std::cout << (test == 0 ? "Failed: pointer is NULL" : "Sucess: pointer is not null | ") << test << std::endl; 
-      identify(test);
-      std::cout << "test is: " << typeid(test).name() << std::endl;
-      std::cout << "*test is: " << typeid(*test).name() << std::endl;
-      return 0;
+    test = generate();
+    identify(test);
+    identify(*test);
+    delete test;
+    return 0;
 }

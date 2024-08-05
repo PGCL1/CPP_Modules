@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 12:55:31 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/02 14:43:33 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:30:02 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 #include <iostream>
-
-template <typename T>
-void iter(T* ptr, size_t len, void(*FuncPtr)(T*))
-{
-    for (size_t i = 0; i < len; i += 1)
-        FuncPtr(ptr + i);
-    return;
-}
 
 template <typename T>
 void add1(T* num)

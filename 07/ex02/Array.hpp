@@ -14,17 +14,21 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <exception>
 
 template <class T>
 class Array
 {
     private:
         T *m_element;
+        size_t m_size;
     public:
-        void    setElement(int pos, T value);
-        T       getElement(int pos);
-        size_t  size();
-
+        void    setElement(size_t pos, T value);
+        T       getElement(size_t pos);
+        size_t  getSize();
+        class outBoundIndex : public std::exception {
+            const char *what(void) const throw();
+        };
         Array();
         Array(unsigned int n);
         Array(Array const& example);
@@ -53,15 +57,17 @@ Array<T>::Array(unsigned int n)
 {
     std::cout << "Array's Param Constructor" << std::endl;
     m_element = new T[n]();
+    m_size += n;
 }
 
 template <class T>
 Array<T>::Array(Array<T> const& example)
 {
-    //need to find a way to find len
+    if (this->getSize())
+        delete [] m_element;
     if (this != &example)
     {
-        //this->m_element = new T[len];
+        this->m_element = new T[example.getSize()];
         for (unsigned int i = 0; example.m_element[i]; i++)
             this->m_element[i] = example.m_element[i];
     }
@@ -76,15 +82,32 @@ Array<T>::~Array()
 }
 
 template <class T>
-void Array<T>::setElement(int pos, T value)
+void Array<T>::setElement(size_t pos, T value)
 {
-    m_element[pos] = value;
+    if (pos < m_size)
+        m_element[pos] = value;
+    else
+        throw Array<T>::outBoundIndex();
 }
 
 template <class T>
-T Array<T>::getElement(int pos)
+T Array<T>::getElement(size_t pos)
 {
-    return (m_element[pos]);
+    if (pos < m_size)
+        return (m_element[pos]);
+    else
+        throw Array<T>::outBoundIndex();
+}
+
+template <class T>
+size_t Array<T>::getSize()
+{
+    return (m_size);
+}
+
+template <class T>
+const char* Array<T>::outBoundIndex::what() const throw() {
+    return ("Index is out of bound");
 }
 
 #endif

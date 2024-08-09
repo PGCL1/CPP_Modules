@@ -12,19 +12,22 @@
 
 #include "Array.hpp"
 #include <iostream>
+#include <exception>
 
 int main()
 {
 #if 1
-    Array<int> a;
-    std::cout << a.getElement(0) << std::endl;
-
-    Array<int> b(10);
-    std::cout << b.getElement(0) << std::endl;
-#else
-
-    int *a = new int();
-    std::cout << a[0] << std::endl;
+    try
+    {
+        Array<int> b(10);
+        std::cout << b.getElement(5) << std::endl;
+        std::cout << b.getSize() << std::endl;
+        std::cout << b.getElement(-1) << std::endl;
+    }
+    catch (std::exception &err)
+    {
+        std::cout << "Error: " << err.what() << std::endl;
+    }
 
 #endif
 }

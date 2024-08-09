@@ -22,7 +22,18 @@ int main()
         Array<int> b(10);
         std::cout << b.getElement(5) << std::endl;
         std::cout << b.getSize() << std::endl;
-        std::cout << b.getElement(-1) << std::endl;
+        for (size_t i = 0; i < 10; i++)
+            b.setElement(i, 4);
+        std::cout << b[9] << std::endl;
+
+        Array<int> test(b);
+        for (size_t i = 0; i < 10; i++)
+            std::cout << test[i] << " ";
+        std::cout << std::endl;
+
+        Array<int> c;
+        std::cout << c[0] << std::endl;
+        
     }
     catch (std::exception &err)
     {

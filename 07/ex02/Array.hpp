@@ -24,24 +24,16 @@ class Array
         size_t m_size;
     public:
         void    setElement(size_t pos, T value);
-        T       getElement(size_t pos);
-        size_t  getSize();
+        T&      operator[](size_t index) const;
+        T       getElement(size_t pos) const;
+        size_t  getSize() const;
         class outBoundIndex : public std::exception {
             const char *what(void) const throw();
         };
         Array();
         Array(unsigned int n);
         Array(Array const& example);
-        Array& operator=(Array const& example)
-        {
-            std::cout << "Array's Assignement Overload `=`" << std::endl;
-            if (this != example)
-            {
-                for (unsigned int i = 0; example[i]; i++)
-                    this->m_element[i] = example.m_element[i];
-            }
-            return (*this);
-        }
+        Array& operator=(Array const& example);
         ~Array();
 };
 
@@ -65,13 +57,32 @@ Array<T>::Array(Array<T> const& example)
 {
     if (this->getSize())
         delete [] m_element;
+    size_t len = example.getSize();
+    this->m_size = len;
     if (this != &example)
     {
-        this->m_element = new T[example.getSize()];
-        for (unsigned int i = 0; example.m_element[i]; i++)
+        this->m_element = new T[len];
+        for (unsigned int i = 0; i < len; i++)
             this->m_element[i] = example.m_element[i];
     }
     return;
+}
+
+template <class T>
+Array<T>& Array<T>::operator=(Array<T> const& example)
+{
+    std::cout << "Array's Assignement Overload `=`" << std::endl;
+    if (this->getSize())
+        delete [] m_element;
+    size_t len = example.getSize();
+    this->m_size = len;
+    if (this != &example)
+    {
+        this->m_element = new T[len];
+        for (unsigned int i = 0; i < len; i++)
+            this->m_element[i] = example.m_element[i];
+    }
+    return (*this);
 }
 
 template <class T>
@@ -90,8 +101,17 @@ void Array<T>::setElement(size_t pos, T value)
         throw Array<T>::outBoundIndex();
 }
 
+
 template <class T>
-T Array<T>::getElement(size_t pos)
+T&      Array<T>::operator[](size_t index) const
+{
+    if (index < m_size)
+        return (m_element[index]);
+    throw Array<T>::outBoundIndex();
+}
+
+template <class T>
+T Array<T>::getElement(size_t pos) const
 {
     if (pos < m_size)
         return (m_element[pos]);
@@ -100,7 +120,7 @@ T Array<T>::getElement(size_t pos)
 }
 
 template <class T>
-size_t Array<T>::getSize()
+size_t Array<T>::getSize() const
 {
     return (m_size);
 }

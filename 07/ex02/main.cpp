@@ -19,9 +19,12 @@ int main()
 #if 1
     try
     {
+        Array<int> bb;
+        Array<int> aa(bb);
+/*
         Array<int> b(10);
         std::cout << b.getElement(5) << std::endl;
-        std::cout << b.getSize() << std::endl;
+        std::cout << b.size() << std::endl;
         for (size_t i = 0; i < 10; i++)
             b.setElement(i, 4);
         std::cout << b[9] << std::endl;
@@ -33,7 +36,7 @@ int main()
 
         Array<int> c;
         std::cout << c[0] << std::endl;
-        
+  */      
     }
     catch (std::exception &err)
     {

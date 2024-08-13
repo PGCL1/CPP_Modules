@@ -26,7 +26,7 @@ class Array
         void    setElement(size_t pos, T value);
         T&      operator[](size_t index) const;
         T       getElement(size_t pos) const;
-        size_t  getSize() const;
+        size_t  size() const;
         class outBoundIndex : public std::exception {
             const char *what(void) const throw();
         };
@@ -41,7 +41,8 @@ template <class T>
 Array<T>::Array() 
 {
     std::cout << "Array's Default Constructor" << std::endl;
-    m_element = new T();
+    m_element = new T[1]();
+    m_size = 1;
 }
 
 template <class T>
@@ -49,15 +50,13 @@ Array<T>::Array(unsigned int n)
 {
     std::cout << "Array's Param Constructor" << std::endl;
     m_element = new T[n]();
-    m_size += n;
+    m_size = n;
 }
 
 template <class T>
 Array<T>::Array(Array<T> const& example)
 {
-    if (this->getSize())
-        delete [] m_element;
-    size_t len = example.getSize();
+    size_t len = example.size();
     this->m_size = len;
     if (this != &example)
     {
@@ -65,16 +64,14 @@ Array<T>::Array(Array<T> const& example)
         for (unsigned int i = 0; i < len; i++)
             this->m_element[i] = example.m_element[i];
     }
-    return;
 }
 
 template <class T>
 Array<T>& Array<T>::operator=(Array<T> const& example)
 {
     std::cout << "Array's Assignement Overload `=`" << std::endl;
-    if (this->getSize())
-        delete [] m_element;
-    size_t len = example.getSize();
+    delete [] m_element;
+    size_t len = example.size();
     this->m_size = len;
     if (this != &example)
     {
@@ -120,7 +117,7 @@ T Array<T>::getElement(size_t pos) const
 }
 
 template <class T>
-size_t Array<T>::getSize() const
+size_t Array<T>::size() const
 {
     return (m_size);
 }

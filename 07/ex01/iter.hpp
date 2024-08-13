@@ -16,10 +16,10 @@
 #include <stdlib.h>
 
 template <typename T>
-void iter(T* ptr, size_t len, void(*FuncPtr)(T*))
+void iter(T* ptr, size_t len, void(*FuncPtr)(T&))
 {
     for (size_t i = 0; i < len; i += 1)
-        FuncPtr(ptr + i);
+        FuncPtr(*(ptr + i));
     return;
 }
 

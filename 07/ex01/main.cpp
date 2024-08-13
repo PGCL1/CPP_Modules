@@ -14,33 +14,39 @@
 #include <iostream>
 
 template <typename T>
-void add1(T* num)
+void add1(T& num)
 {
-   *num += 1; 
+   num += 1; 
 }
 
 template <typename T>
-void remove1(T* num)
+void remove1(T& num)
 {
-   *num -= 1; 
+   num -= 1; 
 }
 
 template <typename T>
-void square(T* num)
+void square(T& num)
 {
-   *num *= *num; 
+   num *= num; 
 }
 
 template <typename T>
-void addWord(T* string)
+void addWord(T& string)
 {
-    *string += "YEAAAAA";
+    string += "YEAAAAA";
+}
+
+template <typename T>
+void print(T& element)
+{
+    std::cout << element << " "; 
 }
 
 
 int main()
 {
-#if 0
+#if 1
     int arr[] = {1, 2, 3, 4, 5};
     size_t len = sizeof(arr) / sizeof(int);
     std::cout << "arr len = "<< len << std::endl;
@@ -50,11 +56,11 @@ int main()
         std::cout << "arr[" << i << "] = " << arr[i] << std::endl;
     std::cout << std::endl; 
 
-    ::iter(arr, len, square);
-    std::cout << "Using iter square" << std::endl;
+   // ::iter(arr, len, square);
+    //std::cout << "Using iter square" << std::endl;
 
-    //::iter(arr, len, remove1);
-    //std::cout << "Using iter remove1" << std::endl;
+    ::iter(arr, len, remove1);
+    std::cout << "Using iter remove1" << std::endl;
 
     //::iter(arr, len, add1);
     //std::cout << "Using iter add1" << std::endl;
@@ -74,8 +80,7 @@ int main()
     std::cout << "\nUsing iter addWord\n" << std::endl;
     
     std::cout << "AFTER: " << std::endl;
-    for (size_t i = 0; i < len; i += 1)
-        std::cout << "arr[" << i << "] = " << arr[i] << std::endl;
+    ::iter(arr, len, print);
 
 #endif
 }

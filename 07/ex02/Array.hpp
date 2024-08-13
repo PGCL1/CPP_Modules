@@ -49,6 +49,8 @@ template <class T>
 Array<T>::Array(unsigned int n)
 {
     std::cout << "Array's Param Constructor" << std::endl;
+    if ((int)n <= 0)
+        throw Array::outBoundIndex();
     m_element = new T[n]();
     m_size = n;
 }
@@ -92,7 +94,7 @@ Array<T>::~Array()
 template <class T>
 void Array<T>::setElement(size_t pos, T value)
 {
-    if (pos < m_size)
+    if (pos < m_size && (int)pos > 0)
         m_element[pos] = value;
     else
         throw Array<T>::outBoundIndex();
@@ -102,7 +104,7 @@ void Array<T>::setElement(size_t pos, T value)
 template <class T>
 T&      Array<T>::operator[](size_t index) const
 {
-    if (index < m_size)
+    if (index < m_size && (int)index >= 0)
         return (m_element[index]);
     throw Array<T>::outBoundIndex();
 }
@@ -110,7 +112,7 @@ T&      Array<T>::operator[](size_t index) const
 template <class T>
 T Array<T>::getElement(size_t pos) const
 {
-    if (pos < m_size)
+    if (pos < m_size && (int)pos > 0)
         return (m_element[pos]);
     else
         throw Array<T>::outBoundIndex();

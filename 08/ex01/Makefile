@@ -44,6 +44,7 @@ LDFLAGS			= -fsanitize=address
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
+				  Span.cpp
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

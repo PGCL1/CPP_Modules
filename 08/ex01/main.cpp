@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:26:33 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/14 17:36:22 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:52:29 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main()
     a.addNumber(15);
     a.addNumber(6);
     a.addNumber(71);
-    a.addNumber(-8);
     
     a.printElements();
     return 0;

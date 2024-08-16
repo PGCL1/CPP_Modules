@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:26:33 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 14:17:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:29:09 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
         a.addNumber(6);
         a.addNumber(71);
 
-        std::cout << a.shortestSpan() << std::endl;
+//        std::cout << a.shortestSpan() << std::endl;
         std::cout << a.longestSpan() << std::endl;
         a.printElements();
     }

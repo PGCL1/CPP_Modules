@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:13:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 14:20:57 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:36:21 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void Span::addNumber(int num)
     {
         m_size += 1;
         m_element.push_back(num); 
-        // only do this for shortest span or longest span m_element.sort();
     }
     else
         throw Span::maxSizeReached();
@@ -64,8 +63,14 @@ int Span::longestSpan()
         m_element.sort();
         std::list<int>::iterator it = m_element.begin();
         std::list<int>::iterator end = m_element.end();
-        std::cout << "end: " << *end << " | it: " << *it << std::endl;
-        return (*end - *it);
+        int begin = *it;
+        int last = 0;
+        while (it != end)
+        {
+            last = *it;
+            it++;
+        }
+        return (last - begin);
     }
     throw Span::emptyList();
 }

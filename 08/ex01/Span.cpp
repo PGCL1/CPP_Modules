@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
+/*   By: glacroix <glacroix@student.42madrid.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:13:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 18:27:37 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 19:32:51 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,7 @@ int Span::longestSpan()
         m_element.sort();
         std::list<int>::iterator it = m_element.begin();
         std::list<int>::iterator end = m_element.end();
-        int begin = *it;
-        int last = 0;
-        while (it != end)
-        {
-            last = *it;
-            it++;
-        }
-        return (last - begin);
+        return (*(--end) - *it);
     }
     throw Span::emptyList();
 }

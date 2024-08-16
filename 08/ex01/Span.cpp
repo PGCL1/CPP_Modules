@@ -49,8 +49,9 @@ int Span::shortestSpan()
 {
     if (m_size != 0)
     {
-        m_element.sort();
-        std::list<int>::iterator it = m_element.begin();
+        std::list<int> tmp(m_element);
+        tmp.sort();
+        std::list<int>::iterator it = tmp.begin();
         int begin = *it;
         return (*(++it) - begin);
     }
@@ -61,9 +62,10 @@ int Span::longestSpan()
 {
     if (m_size != 0)
     {
-        m_element.sort();
-        std::list<int>::iterator it = m_element.begin();
-        std::list<int>::iterator end = m_element.end();
+        std::list<int> tmp(m_element);
+        tmp.sort();
+        std::list<int>::iterator it = tmp.begin();
+        std::list<int>::iterator end = tmp.end();
         return (*(--end) - *it);
     }
     throw Span::emptyList();

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:07:09 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/14 17:35:41 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 14:10:41 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ class Span {
     private:
         std::list<int> m_element;
         unsigned int m_maxSize;
+        unsigned int m_size;
     public:
+        class maxSizeReached : public std::exception {
+        const char * what() const throw();
+        };
+        class emptyList : public std::exception {
+        const char * what() const throw();
+        };
         void addNumber(int num);
         void printElements();
         //void addAll(std::vector<int> argList);
-        //int shortestSpan();
-        //int longestSpan();
+        int shortestSpan();
+        int longestSpan();
 
         Span();
         Span(unsigned int N);

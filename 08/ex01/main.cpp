@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 17:26:33 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 14:29:09 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:30:36 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ int main()
 #else
     try {
         Span a(5);
-        a.addNumber(4);
-        a.addNumber(15);
-        a.addNumber(6);
-        a.addNumber(71);
+        a.addAll(4, 15, 61, 7);
 
-//        std::cout << a.shortestSpan() << std::endl;
-        std::cout << a.longestSpan() << std::endl;
+        std::cout << "Shortest span is: " << a.shortestSpan() << std::endl;
+        std::cout << "Longest span is: " << a.longestSpan() << std::endl;
         a.printElements();
     }
     catch(const std::exception& err)

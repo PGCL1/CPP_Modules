@@ -6,12 +6,13 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:13:58 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 14:36:21 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:27:37 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iostream>
+#include <cstdarg>
 
 Span::Span() : m_element()
 {
@@ -96,4 +97,22 @@ const char* Span::maxSizeReached::what() const throw()
 const char* Span::emptyList::what() const throw()
 {
     return ("No numbers stored, no span found!");
+}
+
+void Span::addAll(int size,...)
+{
+    va_list args;
+    va_start(args, size);
+    while (--size != 0)
+    {
+        int num = va_arg(args, int);
+        m_element.push_back(num);
+        std::cout << num << std::endl;
+        m_size += 1;
+    }
+    va_end(args);
+    /*if (argList.size() + m_size >= m_maxSize)
+        throw Span::maxSizeReached();
+    std::list<int>::iterator it = m_element.begin();
+    m_element.insert(it, argList.begin(), argList.end());*/
 }

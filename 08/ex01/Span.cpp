@@ -12,21 +12,36 @@
 
 #include "Span.hpp"
 #include <iostream>
-#include <cstdarg>
 
-Span::Span() : m_element()
+Span::Span() : m_element(), m_maxSize(0), m_size(0)
 {
-    m_maxSize = 0;
-    m_size = 0;
     std::cout << "Default Constructor Span" << std::endl;
-    
 }
 
-Span::Span(unsigned int N) : m_element()
+Span::Span(unsigned int N) : m_element(), m_maxSize(N), m_size(0)
 {
-    m_size = 0;
-    m_maxSize = N;
     std::cout << "Constructor with Params Span" << std::endl;
+}
+
+Span::Span(Span& example) : m_maxSize(example.m_maxSize)
+{
+    if (this != &example)
+    {
+        m_size = example.m_size;
+        m_element.assign(example.m_element.begin(), example.m_element.end());
+    }
+}
+
+Span& Span::operator=(const Span& example)
+{
+    if (example.m_size > this->m_maxSize)
+        throw Span::cannotCopy();
+    if (this != &example)
+    {
+        m_size = example.m_size;
+        m_element.assign(example.m_element.begin(), example.m_element.end());
+    }
+    return (*this);
 }
 
 Span::~Span()
@@ -45,7 +60,16 @@ void Span::addNumber(int num)
         throw Span::maxSizeReached();
 }
 
-int Span::shortestSpan()
+void Span::addAll(std::vector<int> vec)
+{
+    m_size += vec.size();
+    if (m_size > m_maxSize)
+        throw Span::maxSizeReached();
+    std::list<int>::iterator it = m_element.begin();
+    m_element.insert(it, vec.begin(), vec.end());
+}
+
+int Span::shortestSpan() const
 {
     if (m_size != 0)
     {
@@ -58,7 +82,7 @@ int Span::shortestSpan()
     throw Span::emptyList();
 }
 
-int Span::longestSpan()
+int Span::longestSpan() const
 {
     if (m_size != 0)
     {
@@ -73,6 +97,8 @@ int Span::longestSpan()
 
 void Span::printElements()
 {
+    if (!m_size)
+        throw Span::emptyList();
     std::list<int>::iterator it = m_element.begin();
     std::list<int>::iterator end = m_element.end();
     while (it != end)
@@ -88,26 +114,13 @@ const char* Span::maxSizeReached::what() const throw()
     return ("Maximum size has been reached, cannot add more numbers");
 }
 
+const char* Span::cannotCopy::what() const throw()
+{
+    return ("Cannot copy this list as its size is superior to the maxSize of the current list");
+}
 
 const char* Span::emptyList::what() const throw()
 {
     return ("No numbers stored, no span found!");
 }
 
-void Span::addAll(int size,...)
-{
-    va_list args;
-    va_start(args, size);
-    while (--size != 0)
-    {
-        int num = va_arg(args, int);
-        m_element.push_back(num);
-        std::cout << num << std::endl;
-        m_size += 1;
-    }
-    va_end(args);
-    /*if (argList.size() + m_size >= m_maxSize)
-        throw Span::maxSizeReached();
-    std::list<int>::iterator it = m_element.begin();
-    m_element.insert(it, argList.begin(), argList.end());*/
-}

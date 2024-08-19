@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:07:09 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/16 18:28:34 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:13:45 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,35 @@
 
 #include <vector>
 #include <list>
-#include <set>
 
 class Span {
     private:
         std::list<int> m_element;
-        unsigned int m_maxSize;
+        const unsigned int m_maxSize;
         unsigned int m_size;
     public:
+        Span();
+        Span(unsigned int N);
+        Span(Span& example);
+        Span& operator=(const Span& example);
+        ~Span();
+
+        void addNumber(int num);
+        void addAll(std::vector<int> vec);
+        int shortestSpan() const;
+        int longestSpan() const;
+        void printElements();
+
         class maxSizeReached : public std::exception {
+            const char * what() const throw();
+        };
+        class cannotCopy : public std::exception {
             const char * what() const throw();
         };
         class emptyList : public std::exception {
             const char * what() const throw();
         };
-        void addNumber(int num);
-        void printElements();
-        void addAll(int size, ...);
-        int shortestSpan();
-        int longestSpan();
 
-        Span();
-        Span(unsigned int N);
-        //copy and = overload
-        ~Span();
 };
 
 #endif

@@ -19,12 +19,20 @@ int main()
 
 #else
     try {
-        Span a(5);
-        a.addAll(4, 15, 61, 7);
+        Span a(100);
+        int myArray[] = {4, 15, 61, 43, 56, 78, 80, 2, 14, 5, 6};
+        std::vector<int> vec;
 
-        std::cout << "Shortest span is: " << a.shortestSpan() << std::endl;
-        std::cout << "Longest span is: " << a.longestSpan() << std::endl;
-        a.printElements();
+        std::vector<int>::iterator it;
+        it = vec.begin();
+        vec.insert(it, myArray, myArray + 11);
+        a. addAll(vec);
+
+        Span b(101);
+        b = a;
+        std::cout << "Shortest span is: " << b.shortestSpan() << std::endl;
+        std::cout << "Longest span is: " << b.longestSpan() << std::endl;
+        b.printElements();
     }
     catch(const std::exception& err)
     {

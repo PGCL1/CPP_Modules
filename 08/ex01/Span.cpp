@@ -13,8 +13,9 @@
 #include "Span.hpp"
 #include <iostream>
 
-Span::Span() : m_element(), m_maxSize(0), m_size(0)
+Span::Span() : m_element(), m_size(0)
 {
+    m_maxSize = 0;
     std::cout << "Default Constructor Span" << std::endl;
 }
 
@@ -34,7 +35,6 @@ Span::Span(Span& example) : m_maxSize(example.m_maxSize)
 
 Span& Span::operator=(const Span& example)
 {
-    std::cout << "example size = " << example.m_size << " | m_maxSize = " << this->m_maxSize << std::endl;
     if (example.m_size > this->m_maxSize)
         throw Span::cannotCopy();
     if (this != &example)

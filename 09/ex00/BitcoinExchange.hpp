@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:54:35 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/22 13:31:28 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:56:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,33 @@
 #define BITCOIN_EXCHANGE_HPP
 
 #include <sstream>
+#include <map>
+#include <fstream>
 #include <iomanip>
 #include <iostream>
 
 class BitcoinExchange 
 {
     private:
-        int m_year;
-        int m_month;
-        int m_day;
-        double m_value;
+        std::map<std::string, float> m_dailyPrice;
+        //float m_exchangeRate;
+        //const std::ifstream m_db;
+        //const std::ifstream& m_inputFile;
     public:
-        BitcoinExchange(std::string line);
-        void print();
+        BitcoinExchange(std::ifstream& database);
+        void getConversion(std::string line, float exchangeRate);
 };
+
+bool errorLine(std::string date, float exchangeRate);
+
+
+template <typename T>
+std::string numToString(T Number)
+{
+    std::ostringstream ss;
+    ss << Number;
+    return ss.str();
+}
 
 template <typename T>
 T strToNum(std::string str)

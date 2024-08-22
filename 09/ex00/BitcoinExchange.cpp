@@ -6,30 +6,66 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:01:18 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/22 13:33:03 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:02:04 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::string line)
+BitcoinExchange::BitcoinExchange(std::ifstream& database) 
 {
-    m_year = strToNum<int>(line.substr(0, 4));
-    m_month = strToNum<int>(line.substr(5, 2));
-    m_day = strToNum<int>(line.substr(8, 2));
-    m_value = strToNum<double>(line.substr(11));
-    /*m_exchangeRate = strToNum<double>(line.substr(line.find("|") + 1));
-
-    if (m_month < 0 || m_day < 0 || m_month > 12 || m_day > 31)
-        std::cerr << "Error: date is incorrect => " << line << std::endl;
-
-    if (m_exchangeRate < 0.0 || m_exchangeRate > 1000.0)
-        std::cerr << "Error: exchange rate is wrong" << std::endl;
-    */
+    std::string line;
+    std::map<std::string, float>::iterator it = m_dailyPrice.begin();
+    while (std::getline(database, line))
+    {
+        std::string date = line.substr(0, 10);
+        float value = strToNum<float>(line.substr(11));
+        m_dailyPrice.insert(it, std::pair<std::string, float>(date, value));
+    }
 }
 
-void BitcoinExchange::print()
+void removeOneDay(std::string& date)
 {
-    std::cout << m_year << "-" << m_month << "-" << m_day << ": " << m_value << std::endl;
+    int year = strToNum<int>(date.substr(0, 4));
+    int month = strToNum<int>(date.substr(5, 2));
+    int day = strToNum<int>(date.substr(8, 2));
+    if (day > 0)
+        day--;
+    date = numToString<int>(year) + "-0" + numToString<int>(month) + "-0" + numToString<int>(day);
+
+}
+
+void BitcoinExchange::getConversion(std::string date, float exchangeRate)
+{
+   if (m_dailyPrice[date] != 0)
+   {
+       std::cout << date << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
+       return;
+   }
+   while (m_dailyPrice[date] == 0)
+       removeOneDay(date);
+    std::cout << date << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
+
+}
+
+
+bool errorLine(std::string date, float exchangeRate)
+{
+    int year = strToNum<int>(date.substr(0, 4));
+    int month = strToNum<int>(date.substr(5, 2));
+    int day = strToNum<int>(date.substr(8, 2));
+
+    if (year < 0 || month < 0 || day < 0 || year > 2024 || month > 12 || day > 31)
+    {
+        std::cerr << "Error: date is incorrect => " << date << std::endl;
+        return true;
+    }
+
+    if (exchangeRate < 0.0 || exchangeRate > 1000.0)
+    {
+        std::cerr << "Error: exchange rate is wrong" << std::endl;
+        return true;
+    }
+    return false;
 }
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:10:57 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/21 17:11:43 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:11:54 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,27 @@ class MutantStack : public std::stack<T>
             return this->c.end();
         }
 
-        MutantStack() : std::stack<T>() {}
-        MutantStack(const MutantStack& example) : std::stack<T>(example) {}
-        MutantStack operator=(MutantStack& example) {
-            std::stack<T>::operator=(example);
+        MutantStack() : std::stack<T>()
+        {
+            std::cout << "Default Constructor MutantStack" << std::endl;
+        }
+        MutantStack(const MutantStack& example) : std::stack<T>(example)
+        {
+            std::cout << "Copy Constructor MutantStack" << std::endl;
+        }
+        MutantStack& operator=(MutantStack& example)
+        {
+            std::cout << "Operator Overload MutantStack" << std::endl;
+            if (this != &example)
+                std::stack<T>::operator=(example);
             return *this;
         }
-        ~MutantStack() {}
+        ~MutantStack() 
+        {
+            std::cout << "Default Destructor MutantStack" << std::endl;
+        }
 };
+
 
 #endif
 

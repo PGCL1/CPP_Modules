@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:47:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/23 15:18:56 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:22:35 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int main(int argc, char **argv)
         return 1;
     }
     RPN polish(str);    
+    polish.calculatePolishNotation();
     return 0;
 }
+

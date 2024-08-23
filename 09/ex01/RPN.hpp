@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:49:45 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/23 14:55:26 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:25:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class RPN : public std::stack<int>
         {
             return this->c.rbegin();
         }
-        iterator end()
+        iterator end(void)
         {
             return this->c.rend();
         }

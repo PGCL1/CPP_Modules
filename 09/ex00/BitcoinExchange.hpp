@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:54:35 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/23 09:46:34 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:24:54 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ class BitcoinExchange
 {
     private:
         std::map<std::string, float> m_dailyPrice;
-        //float m_exchangeRate;
-        //const std::ifstream m_db;
-        //const std::ifstream& m_inputFile;
     public:
         BitcoinExchange(std::ifstream& database);
         void getConversion(std::string line, float exchangeRate);

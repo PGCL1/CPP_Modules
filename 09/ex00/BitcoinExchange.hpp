@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:54:35 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/22 19:56:25 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 09:46:34 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class BitcoinExchange
 };
 
 bool errorLine(std::string date, float exchangeRate);
-
+void generateNewDate(int year, int month, int day, std::string& date);
 
 template <typename T>
 std::string numToString(T Number)

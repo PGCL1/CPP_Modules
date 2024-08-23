@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 11:01:18 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/22 20:02:04 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 10:41:34 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,53 @@ void removeOneDay(std::string& date)
     int year = strToNum<int>(date.substr(0, 4));
     int month = strToNum<int>(date.substr(5, 2));
     int day = strToNum<int>(date.substr(8, 2));
-    if (day > 0)
-        day--;
-    date = numToString<int>(year) + "-0" + numToString<int>(month) + "-0" + numToString<int>(day);
+    if (day >= 0)
+    {
+        if (day == 0)
+        {
+            if (month >= 1)
+            {
+                if (month == 1)
+                    year--;
+                else
+                    month--;
+            }
+        }
+        else
+            day--;
+    }
+    generateNewDate(year, month, day, date);
+}
 
+void generateNewDate(int year, int month, int day, std::string& date)
+{
+    std::string newDate;
+    newDate += numToString<int>(year);
+    if (month < 10 || day < 10)
+    {
+        if (month < 10)
+            newDate += "-0" + numToString<int>(month);
+        else
+            newDate += "-" + numToString<int>(month);
+        if (day < 10)
+            newDate +=  "-0" + numToString<int>(day);
+        else
+            newDate += "-" + numToString<int>(day);
+    }
+    date = newDate;
 }
 
 void BitcoinExchange::getConversion(std::string date, float exchangeRate)
 {
-   if (m_dailyPrice[date] != 0)
-   {
-       std::cout << date << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
-       return;
-   }
-   while (m_dailyPrice[date] == 0)
-       removeOneDay(date);
-    std::cout << date << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
+    std::string dateInputFile = date;
+    if (m_dailyPrice[date] != 0)
+    {
+        std::cout << dateInputFile << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
+        return;
+    }
+    while (m_dailyPrice[date] == 0)
+        removeOneDay(date);
+    std::cout << dateInputFile << " => " << exchangeRate << " = " << m_dailyPrice[date] * exchangeRate << std::endl;
 
 }
 

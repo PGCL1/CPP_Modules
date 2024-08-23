@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:49:45 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/23 18:25:38 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/23 18:36:44 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <stack>
 
+//i have to do this because it's the only way to access c (cause it's protected)
 class RPN : public std::stack<int>
 {
     public:

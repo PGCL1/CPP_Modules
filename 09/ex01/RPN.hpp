@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:49:45 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 11:49:11 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:37:25 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ class RPN : public std::stack<int>
             const char * what() const throw();
         };
 };
+
+bool isDigit(char c);
+bool isSign(char c);
 
 #endif
 

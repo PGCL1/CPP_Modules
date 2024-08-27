@@ -6,14 +6,12 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:40:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 14:08:58 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:02:16 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 #include <iostream>
-#include <sstream>
-#include <cstdlib>
 
 RPN::RPN()
 {
@@ -25,18 +23,13 @@ bool isDigit(char c)
     return (c >= '0' && c <= '9');
 }
 
-int strToNum(std::string str)
+bool isSign(char c)
 {
-    int result;
-    std::istringstream convert(str);
-    convert >> result;
-    return result;
+    return (c == '-' || c == '+' || c == '*' || c == '/');
 }
 
 void RPN::pushUntilSign(std::string input)
 {
-    if (this->size())
-        std::cout << "Begin: " << top() << std::endl;
     unsigned long i = 0;
     for (;  input[i]; i++)
     {
@@ -51,8 +44,9 @@ void RPN::pushUntilSign(std::string input)
             push(c - '0');
     }
     calculateExpression();
+    
+    //skipping the sign here 
     std::string newString = &input[i+1];
-    std::cout << "\nnewString = " << newString << std::endl;
     if (newString.size() > 1)
         pushUntilSign(newString);
     
@@ -88,7 +82,6 @@ void RPN::calculateExpression()
         throw RPN::badExpression();
     pop();
 
-    //here is the problem need to do an atoi
     int num2 = top();
     std::cout << "num2 = " << top() << " | " << num2 << std::endl;
     pop();
@@ -109,6 +102,8 @@ void RPN::calculateExpression()
             res = num1 * num2;
             break;
         case DIV:
+            if (num1 == 0 || num2 == 0)
+                throw RPN::badExpression();
             res = num1 / num2;
             break;
     }

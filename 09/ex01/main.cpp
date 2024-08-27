@@ -6,23 +6,36 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:47:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 12:03:16 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:03:22 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 #include <iostream>
 
-bool inputWrong(std::string const& str)
+bool unwantedChars(std::string const& str)
 {
-    std::cout << "`" << str << "`" << std::endl;
     for (unsigned int i = 0; str[i]; i++)
     {
-        if (str[i] != ' ' && (str[i] < '0' || str[i] > '9')
-                && str[i] != '-' && str[i] != '+'
-                && str[i] != '/' && str[i] != '*')
+        if (str[i] != ' ' && !isDigit(str[i]) && !isSign(str[i]))
             return true;
     }
+    return false;
+}
+
+bool inputWrong(std::string const& str)
+{
+    int numSigns = 0;
+    int numDigits = 0;
+    for (unsigned long i = 0; str[i]; i++)
+    {
+        if (isDigit(str[i]))
+            numDigits++;
+        else if (isSign(str[i]))
+            numSigns++;
+    }
+    if (numSigns + 1 != numDigits)
+        return true;
     return false;
 }
 
@@ -34,14 +47,21 @@ int main(int argc, char **argv)
         return 1;
     }
     std::string input(argv[1]);
-    if (inputWrong(input) == true)
+    if (unwantedChars(input) || inputWrong(input))
     {
         std::cerr << "Error" << std::endl;
         return 1;
     }
-    RPN polish;    
-    polish.pushUntilSign(input);
-    std::cout << polish.top() << std::endl;
+    try
+    {
+        RPN polish;    
+        polish.pushUntilSign(input);
+        std::cout << polish.top() << std::endl;
+    }
+    catch (const std::exception& err)
+    {
+        std::cout  << err.what() << std::endl;
+    }
     return 0;
 }
 

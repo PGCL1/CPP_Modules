@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:40:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 13:04:40 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:08:58 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void RPN::pushUntilSign(std::string input)
             break;
         }
         if (c != ' ')
-            push(c);
+            push(c - '0');
     }
     calculateExpression();
     std::string newString = &input[i+1];
@@ -89,11 +89,11 @@ void RPN::calculateExpression()
     pop();
 
     //here is the problem need to do an atoi
-    int num2 = top() - '0';
+    int num2 = top();
     std::cout << "num2 = " << top() << " | " << num2 << std::endl;
     pop();
 
-    int num1 = top()- '0';
+    int num1 = top();
     std::cout << "num1 = " << top() << " | " << num1 << std::endl;
     pop();
 

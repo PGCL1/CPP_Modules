@@ -6,16 +6,23 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:40:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 15:02:16 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:37:15 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-#include <iostream>
 
-RPN::RPN()
+RPN::RPN() {}
+
+RPN::RPN(RPN const& example) 
 {
-    std::cout << "Default Constructor RPN" << std::endl;
+    (void) example;
+}
+
+RPN& RPN::operator=(RPN& example) {
+    if (this != &example)
+        return (example);
+    return *this;
 }
 
 bool isDigit(char c)
@@ -52,7 +59,18 @@ void RPN::pushUntilSign(std::string input)
     
 }
 
-int whatSign(char sign)
+/*void RPN::printStack()
+{
+    iterator it = this->begin();
+    iterator end = this->end();
+    while (it != end)
+    {
+        std::cout << *it << std::endl;
+        it++;
+    }
+}*/
+
+static int whatSign(char sign)
 {
     if (sign == '+')
         return 0;
@@ -66,7 +84,6 @@ int whatSign(char sign)
         return -1;
 }
 
-//TODO: check if sign is really a sign
 void RPN::calculateExpression()
 {
     enum signTypes {
@@ -77,17 +94,12 @@ void RPN::calculateExpression()
     };
      
     char sign = top(); 
-    std::cout << "TOP = " << top() << " | " << sign << std::endl;
     if (whatSign(sign) == -1)
         throw RPN::badExpression();
     pop();
-
     int num2 = top();
-    std::cout << "num2 = " << top() << " | " << num2 << std::endl;
     pop();
-
     int num1 = top();
-    std::cout << "num1 = " << top() << " | " << num1 << std::endl;
     pop();
 
     int res;
@@ -108,7 +120,6 @@ void RPN::calculateExpression()
             break;
     }
     push(res);
-    std::cout << "res = " << top() << " | " << res << std::endl;
 }
 
 const char* RPN::badExpression::what() const throw()
@@ -116,7 +127,4 @@ const char* RPN::badExpression::what() const throw()
    return ("Arthimetic expression is wrong"); 
 }
 
-RPN::~RPN() 
-{
-    std::cout << "Default Destructor RPN" << std::endl;
-}
+RPN::~RPN() {}

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:49:45 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 14:37:25 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:33:51 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 //i have to do this because it's the only way to access c (cause it's protected)
 class RPN : public std::stack<int>
 {
-    private:
-        std::string m_arithmeticExpression;
     public:
         typedef std::deque<int>::reverse_iterator iterator;
         iterator begin(void) { return this->c.rbegin(); }
         iterator end(void) { return this->c.rend(); }
 
-        RPN();
         void pushUntilSign(std::string input);
         void calculateExpression();
+        //void printStack();
+
+        RPN();
+        RPN(RPN const& example);
+        RPN& operator=(RPN& example);
         ~RPN();
 
         class badExpression : public std::exception {

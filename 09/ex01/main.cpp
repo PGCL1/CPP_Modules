@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 10:47:02 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/23 18:35:27 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:03:16 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ int main(int argc, char **argv)
         std::cerr << "Error" << std::endl;
         return 1;
     }
-    std::string str(argv[1]);
-    if (inputWrong(str) == true)
+    std::string input(argv[1]);
+    if (inputWrong(input) == true)
     {
         std::cerr << "Error" << std::endl;
         return 1;
     }
-    RPN polish(str);    
-    polish.calculatePolishNotation();
+    RPN polish;    
+    polish.pushUntilSign(input);
+    std::cout << polish.top() << std::endl;
     return 0;
 }
 

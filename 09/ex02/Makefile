@@ -44,6 +44,7 @@ LDFLAGS			= -fsanitize=address
 #SRC Details
 # **************************************************************************** #
 SRCS			= main.cpp \
+				  PmergeMe.cpp
 
 OBJS            = $(SRCS:%.cpp=objs/%.o)
 

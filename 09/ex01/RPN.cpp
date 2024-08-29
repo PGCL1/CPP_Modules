@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 11:40:07 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/27 15:37:15 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:28:08 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void RPN::pushUntilSign(std::string input)
     unsigned long i = 0;
     for (;  input[i]; i++)
     {
-        std::string test;
         char c = input[i];
         if (c == '-' || c == '+' || c == '/' || c == '*')
         {

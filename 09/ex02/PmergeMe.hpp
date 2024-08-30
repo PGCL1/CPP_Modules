@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:22:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/29 16:17:21 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:15:38 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,9 @@ class PmergeMe
         void printElements();
 
         template <typename T>
-        int whatsMyPosition(int target, int start, int end, T& container)
+        void insertElement(typename T::iterator pos, int element, T& container)
         {
-            if (start > end)
-                return -1;
-            const int middle = std::floor((start + end) / 2);
-            if (container[middle] > target)
-                return whatsMyPosition(target, start, middle - 1, container);
-            if (container[middle] < target)
-                return whatsMyPosition(target, middle + 1, end, container);
-            return (middle);
-        }
-        template <typename T>
-        void insertElement(int pos, int element, T& container)
-        {
-            typename T::iterator it = container.begin();
-            container.insert(it + pos, element);
+            container.insert(pos, element);
         }
         
         class negativeNumber : public std::exception {

@@ -6,13 +6,14 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:41:48 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/29 17:14:07 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:18:33 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PmergeMe.hpp"
 #include <sstream>
+#include <algorithm>
 
 int strToNum(std::string str)
 {
@@ -22,40 +23,20 @@ int strToNum(std::string str)
     return result;
 }
 
-//cannot find a way to output a two dimensional template, hence the duplicated function for now
-//problem here in pushing elements in double dimension vector || says the size is 0
-std::vector<std::vector<int> > pairUpVec(std::vector<int>& container)
+std::vector<std::pair<int, int> > pairUpVec(std::vector<int>& container)
 {
-    std::vector<std::vector<int> > doubDimVec;
     unsigned int len = container.size();
     unsigned int amountOfPairs;
-    if (len % 2 == 0) 
-        amountOfPairs = len % 2;
-    else
-        amountOfPairs = len % 2 + 1;
-    for (unsigned int j = 0; j < amountOfPairs; j++)
-    {
-        for (unsigned int i = 0; i < 2 && container[i]; i++)
-            doubDimVec[j].push_back((container[i]));
-    }
-    return doubDimVec;
-}
+    unsigned int i = 0; unsigned int j = 0;
+    amountOfPairs = len / 2;
 
-std::deque<std::deque<int> > pairUpDeq(std::deque<int>& container)
-{
-    std::deque<std::deque<int> > doubDimDeq;
-    unsigned int len = container.size();
-    unsigned int amountOfPairs;
-    if (len % 2 == 0) 
-        amountOfPairs = len % 2;
-    else
-        amountOfPairs = len % 2 + 1;
-    for (unsigned int j = 0; j < amountOfPairs; j++)
+    std::vector<std::pair<int, int> > test;
+    while (i < container.size() && j < amountOfPairs)
     {
-        for (unsigned int i = 0; i < 2 && container[i]; i++)
-            doubDimDeq[j].push_back((container[i]));
+        test.push_back(std::make_pair(container[i], container[i+1]));
+        i+=2, j++;
     }
-    return doubDimDeq;
+    return test;
 }
 
 
@@ -73,24 +54,33 @@ void parseElements(char **argv, int argc, std::vector<int>& inputElements)
     }
 }
 
-std::vector<int> pushLarge(std::vector<std::vector<int> > &doubleDim)
+std::vector<int> pushLarge(std::vector<std::pair<int, int> > &doubleDim, std::vector<int>& container)
 {
     std::vector<int> largeElems;
-    std::cout << "size = " <<  doubleDim.size() << std::endl;
     for (unsigned int j = 0; j < doubleDim.size(); j++)
     {
-        for (unsigned int i = 0; i < 2 && doubleDim[j][i]; i++)
-        {
-            std::cout << "doubleDim: " << doubleDim[j][i] << std::endl;
-            if (doubleDim[j][0] < doubleDim[j][1])
-                largeElems.push_back(doubleDim[j][1]);
+            if (doubleDim[j].first < doubleDim[j].second)
+                largeElems.push_back(doubleDim[j].second);
             else
-                largeElems.push_back(doubleDim[j][0]);
-        }
+                largeElems.push_back(doubleDim[j].first);
     }
-    if (doubleDim.size() % 2 != 0)
-        largeElems.push_back(doubleDim[(int)doubleDim.size() % 2 + 1][0]);
+    if (container.size() % 2 != 0)
+        largeElems.push_back(container[container.size() - 1]);
     return largeElems;
+    
+}
+
+std::vector<int> pushSmall(std::vector<std::pair<int, int> > &doubleDim)
+{
+    std::vector<int> smallElems;
+    for (unsigned int j = 0; j < doubleDim.size(); j++)
+    {
+            if (doubleDim[j].first < doubleDim[j].second)
+                smallElems.push_back(doubleDim[j].first);
+            else
+                smallElems.push_back(doubleDim[j].second);
+    }
+    return smallElems;
     
 }
 
@@ -107,17 +97,32 @@ int main(int argc, char **argv)
     PmergeMe obj(inputElements);
 
     //Vector Sequence
-    std::vector<std::vector<int> > doubleDim_Vec = pairUpVec(obj.getVector()); 
-    std::vector<int> largeElementVec = pushLarge(doubleDim_Vec); 
+    
+    //dividing input into pair of numbers
+    std::vector<std::pair<int, int> > doubleDim_Vec = pairUpVec(obj.getVector()); 
+    
+    //separating pairs into a vector of larger numbers and another one of small numbers
+    std::vector<int> largeElementVec = pushLarge(doubleDim_Vec, obj.getVector()); 
+    std::vector<int> smallElementVect = pushSmall(doubleDim_Vec);
+    std::sort(largeElementVec.begin(), largeElementVec.end());
 
-    std::vector<int>::iterator it = largeElementVec.begin();
-    std::vector<int>::iterator end = largeElementVec.end();
+    for (unsigned int i = 0; i < smallElementVect.size(); i++)
+    {
+        //function from algorithm to find lower-bound index
+        std::vector<int>::iterator pos = std::lower_bound(largeElementVec.begin(), largeElementVec.end(), smallElementVect[i]);
+        obj.insertElement(pos, smallElementVect[i], largeElementVec);
+    }
+    std::swap(obj.getVector(), largeElementVec);
+    
+    //print sorted array
+    std::vector<int>::iterator it = obj.getVector().begin();
+    std::vector<int>::iterator end = obj.getVector().end();
     while (it != end)
     {
         std::cout << *it << std::endl;
         it++;
     }
-
+    
     //Deque Sequence
     /*std::deque<std::deque<int>> doubleDim_Deq = pairUpDeq(obj.getDeque()); 
     std::deque<int> largeElementDeq = pushLarge(doubleDim_Deq); 

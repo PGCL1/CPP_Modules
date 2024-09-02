@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:22:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/08/30 16:15:38 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:39:39 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ class PmergeMe
     public:
         std::vector<int>& getVector();
         std::deque<int>& getDeque();
-        void printElements();
-
-        template <typename T>
-        void insertElement(typename T::iterator pos, int element, T& container)
-        {
-            container.insert(pos, element);
-        }
+        void printSortedVec();
+        void sortElementsVec();
+        void insertElementVec(std::vector<int>::iterator pos, int element, std::vector<int>& container);
+        
+        void printSortedDeq();
+        void sortElementsDeq();
+        void insertElementDeq(std::deque<int>::iterator pos, int element, std::deque<int>& container);
         
         class negativeNumber : public std::exception {
         const char* what() const throw();
@@ -40,7 +40,7 @@ class PmergeMe
 
         PmergeMe(std::vector<int>inputElements);
         PmergeMe(PmergeMe const& example);
-//        PmergeMe& operator=(PmergeMe const& example);
+        PmergeMe& operator=(PmergeMe& example);
         ~PmergeMe();
 
 };

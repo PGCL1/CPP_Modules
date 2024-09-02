@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:03:26 by glacroix          #+#    #+#             */
-/*   Updated: 2024/09/02 12:50:12 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:51:17 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,7 @@ PmergeMe::PmergeMe(std::vector<int> inputElements) : m_vec(inputElements), m_deq
     std::cout << "Before: ";
     unsigned int len = inputElements.size();
     for (unsigned int i = 0; i < len; i++)
-    {
-        if (i == 5)
-        {
-            std::cout << " [...] " << std::endl;
-            break;
-        }
         std::cout << inputElements[i] << " ";
-    }
-
     std::cout << std::endl;
 }
 

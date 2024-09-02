@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:22:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/09/02 12:39:39 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:50:11 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cmath>
 #include <exception>
 
+//the subject here explicitely refrained us from using templates
 class PmergeMe 
 {
     private:

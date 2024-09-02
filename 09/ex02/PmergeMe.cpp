@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:03:26 by glacroix          #+#    #+#             */
-/*   Updated: 2024/09/02 12:45:55 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/09/02 12:50:12 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ PmergeMe& PmergeMe::operator=(PmergeMe& example)
 
 PmergeMe::~PmergeMe() {}
 
+
+//down below you will see code duplicated, the subject here explicitely refrained us from using templates
 std::vector<int>& PmergeMe::getVector() { return m_vec; }
-std::deque<int>& PmergeMe::getDeque() { return m_deq; }
 
 void PmergeMe::insertElementVec(std::vector<int>::iterator pos, int element, std::vector<int>& container)
 {
@@ -137,6 +138,8 @@ void PmergeMe::printSortedVec()
     std::cout << std::endl;
 }
 
+//sorry for this duplicate, the subject explicitely refrains us from using templates
+std::deque<int>& PmergeMe::getDeque() { return m_deq; }
 
 void PmergeMe::insertElementDeq(std::deque<int>::iterator pos, int element, std::deque<int>& container)
 {
@@ -219,9 +222,6 @@ void PmergeMe::printSortedDeq()
     }
     std::cout << std::endl;
 }
-
-
-
 
 const char* PmergeMe::negativeNumber::what() const throw()
 {

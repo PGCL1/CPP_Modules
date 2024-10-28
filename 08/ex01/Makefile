@@ -51,7 +51,7 @@ OBJS            = $(SRCS:%.cpp=objs/%.o)
 #SRC & BONUS SRC Executions
 # **************************************************************************** #
 $(NAME): objs $(OBJS)
-	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 	@echo $(MAGENTA) "\n~~~~~~~~~ span compiled! ~~~~~~~~\n" $(RESET)
 
 #Makefile Commands
@@ -59,16 +59,16 @@ $(NAME): objs $(OBJS)
 all: $(NAME)
 
 objs/%.o: %.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 objs:
-	@mkdir -p objs/
+	mkdir -p objs/
 
 clean:
-	@rm -rf objs
+	rm -rf objs
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 	@echo $(RED) "\n>>>>>>>>>>> deleting object files <<<<<<<<<\n" $(RESET)
 
 re: fclean all

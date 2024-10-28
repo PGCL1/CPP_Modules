@@ -12,10 +12,11 @@
 
 #include "Span.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <climits>
 
-Span::Span() : m_element(), m_size(0)
+Span::Span() : m_element(), m_maxSize(0), m_size(0)
 {
-    m_maxSize = 0;
     std::cout << "Default Constructor Span" << std::endl;
 }
 
@@ -72,13 +73,26 @@ void Span::addAll(std::vector<int> vec)
 
 int Span::shortestSpan() const
 {
+    int min_dist = INT_MAX;
+    std::vector<int> vec;
+    std::vector<int>::iterator it = vec.begin();
+    vec.insert(it, m_element.begin(), m_element.end());
     if (m_size != 0)
     {
-        std::list<int> tmp(m_element);
-        tmp.sort();
-        std::list<int>::iterator it = tmp.begin();
-        int begin = *it;
-        return (*(++it) - begin);
+        unsigned int i = 0;
+        while (i < vec.size())
+        {
+            unsigned int j = i + 1;
+            while (j < vec.size())
+            {
+                if (min_dist > abs(vec[i] - vec[j]))
+                    min_dist = abs(vec[i] - vec[j]);
+                j++;
+
+            }
+            i++;
+        }
+        return (min_dist);
     }
     throw Span::emptyList();
 }

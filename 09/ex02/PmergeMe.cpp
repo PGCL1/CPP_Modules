@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:03:26 by glacroix          #+#    #+#             */
-/*   Updated: 2024/09/02 12:51:17 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:54:44 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,11 @@ void PmergeMe::printSortedDeq()
 
 const char* PmergeMe::negativeNumber::what() const throw()
 {
-    return ("Error: numbers passed as args cannot be negative\n");
+    return ("Error: numbers passed as args cannot be negative");
 }
 
+const char* PmergeMe::badInput::what() const throw()
+{
+    return ("Error: the input can only hold digits");
+}
 

@@ -6,7 +6,7 @@
 /*   By: glacroix <PGCL>                            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:22:21 by glacroix          #+#    #+#             */
-/*   Updated: 2024/09/02 12:50:11 by glacroix         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:18:53 by glacroix         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ class PmergeMe
         void insertElementDeq(std::deque<int>::iterator pos, int element, std::deque<int>& container);
         
         class negativeNumber : public std::exception {
+        const char* what() const throw();
+        };
+
+        class badInput : public std::exception {
         const char* what() const throw();
         };
 

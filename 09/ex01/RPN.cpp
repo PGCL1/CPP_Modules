@@ -113,7 +113,7 @@ void RPN::calculateExpression()
             res = num1 * num2;
             break;
         case DIV:
-            if (num1 == 0 || num2 == 0)
+            if (num2 == 0)
                 throw RPN::badExpression();
             res = num1 / num2;
             break;

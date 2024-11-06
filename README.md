@@ -10,4 +10,4 @@ In 42, the introductory modules to CPP are separated in two parts, consisting of
 - [x] CPP_06:  the different casts in CPP
 - [x] CPP_07:  CPP templates
 - [x] CPP_08:  templated containers, iterators and algorithms in CPP
-- [ ] CPP_09:  containers in CPP
+- [x] CPP_09:  containers in CPP

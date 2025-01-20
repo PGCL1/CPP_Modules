@@ -15,68 +15,30 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
-#include <string.h>
 
-int isDecimal(char *str)
+const std::string getType(char *input)
 {
-    int count_dot = 0;
-    int count_f = 0;
-    size_t i = 0;
-
-    if (str[i] == '-' || str[i] == '+')
-        i++;
-    for (; str[i]; i++)
-    {
-        if (str[i] == '.' || str[i] == 'f')
-        {
-            if (str[i] == '.')
-                count_dot++;
-            if (str[i] == 'f')
-                count_f++;
-            continue;
-        }
-        if (!(str[i] >= '0' && str[i] <= '9') || count_dot > 1 || count_f > 1)
-            return (0);
-    }
-    if (count_dot || count_f)
-        return (1);
-    return (0);
-}
-
-int isInt(char *str)
-{
-    size_t i = 0;
-    if (str[i] == '-' || str[i] == '+')
-        i++;
-    for (; str[i]; i++)
-    {
-        if (!(str[i] >= '0' && str[i] <= '9'))
-            return (0);
-    }
-    return (1);
-}
-
-std::string getType(char *input)
-{
-    const std::string types[5] = {"char", "double", "float", "int", "null"};
     if (!input)
-        return (types[4]);
-    const std::string str_input = input;
-    if (isDecimal(input))
-    {
-        if (str_input.find_first_of('.'))
-        {
-            if (str_input.find_first_of('f'))
-                return (types[2]);
-            else
-                return (types[1]);
-        }
-    }
-    else if (isInt(input))
-        return (types[3]);
-    return (types[0]);
-}
+        return "null";
+    std::string str = input;
+    std::stringstream ss(input);
 
+    int num;
+    ss << input;
+    ss >> num;
+
+    if (ss.fail())
+        return "char";
+    else
+    {
+        if (str.find(".") != std::string::npos)
+        {
+            if (str.find("f") != std::string::npos) return "float";
+            return "double"; 
+        }
+        return "int";
+    }
+}
 
 void notPrintable()
 {
@@ -140,7 +102,7 @@ void convertDouble(char *input)
 
 void IScalarConverter::convert(char* input)
 {
-    std::string type = getType(input);
+    const std::string type = getType(input);
     if (type == "null")
     {
         notPrintable();

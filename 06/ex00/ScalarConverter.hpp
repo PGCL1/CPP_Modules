@@ -21,9 +21,6 @@ class IScalarConverter {
 
 };
 
-int isDecimal(char *str);
-int isInt(char *str);
-
 void convertChar(char *input);
 void convertInt(char *input);
 void convertFloat(char *input);
@@ -32,6 +29,6 @@ void convertDouble(char *input);
 void notPrintable();
 void printTypes(int i, char c, double d, float f);
 
-std::string getType(char *input);
+const std::string getType(char *input);
 
 #endif
